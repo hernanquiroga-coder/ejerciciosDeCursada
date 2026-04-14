@@ -1,0 +1,105 @@
+// Programación con Objetos 1
+// Objeto, mensaje, método, variable
+
+// EJ#01
+
+    // object contador {
+    //     var     valorActual = 0
+
+    //     method  reset() {valorActual = 0}
+    //     method  incremento() {valorActual = valorActual + 1}
+    //     method  dec() {valorActual = 0.max(valorActual - 1)}
+    //     method  valorActual() = valorActual
+    //     method  valorActual(_nuevoValorActual) {valorActual = _nuevoValorActual
+    //     }
+    // }   
+
+// EJ#02
+
+    object contador {   
+        var     valorActual = 0
+        var     ultimoComando = 'reset'
+
+        method  reset() {
+            valorActual = 0
+            ultimoComando = 'reset'
+        }
+        method  incremento() {
+            valorActual = valorActual + 1
+            ultimoComando = 'incremento'
+        }
+        method  dec() {
+            valorActual = 0.max(valorActual - 1)
+            ultimoComando = 'decremento'
+        }
+        method  valorActual() = valorActual
+        method  valorActual(_nuevoValorActual) {
+            valorActual = _nuevoValorActual
+            ultimoComando = 'actualizacion'
+        }
+        method ultimoComando() = ultimoComando
+    }   
+
+// Ej#03
+
+    // object pepita {
+    //     var energia = 0     
+
+    //     method comer(_gramos) {energia = energia + _gramos * 4}
+    //     method volar(_km) {energia = energia - (1 * _km + pepita.costoDespegueAterrizaje())}
+    //     method energia() = energia
+    //     method costoDespegueAterrizaje() = 10
+    // }
+
+// Ej#04
+
+    // object pepita {
+    //     var energia = 0     
+        
+    //     method comer(_gramos) {energia = energia + _gramos * 4}
+    //     method volar(_km) {energia = energia - (1 * _km + self.costoDespegueAterrizaje())}
+    //     method energia() = energia
+    //     method costoDespegueAterrizaje() = 10
+    //     method estaDebil() = energia < 50
+    //     method estaFeliz() = energia.between(500, 1000)
+    //     method consumoBaseDeVuelo() = energia / 5
+    //     method cuantoQuiereVolar() {
+    //         if (energia.between(300, 400) && energia % 20 == 0) {
+    //             return
+    //                 self.consumoBaseDeVuelo() + 10 + 15
+    //         }
+    //         else if (energia.between(300, 400)) {
+    //             return 
+    //                 self.consumoBaseDeVuelo() + 10
+    //         }
+    //         else 
+    //             {
+    //                 self.consumoBaseDeVuelo()
+    //             }
+    //     }
+    // }
+
+// Ej#05
+
+    object calculadora {
+        var onDisplay = 0
+        method cargar(_numero) {
+            onDisplay = _numero
+        }
+        method sumar(_numero) {
+            onDisplay = _numero + onDisplay
+        }
+        method restar(_numero) {
+            onDisplay = onDisplay - _numero
+        }
+        method multiplicar(_numero) {
+            onDisplay = _numero * onDisplay
+        }
+        method valorActual() = onDisplay
+    }
+
+// Ej#06
+
+object teclado {
+  
+}

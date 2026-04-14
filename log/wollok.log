@@ -1,0 +1,16 @@
+{"level":"info","message":"⌛ Building environment","timeElapsed":589,"timestamp":"2026-04-14T19:48:54.782Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":295,"timestamp":"2026-04-14T19:48:55.087Z"}
+{"level":"info","message":"⌛ Validating guiaNum01.wlk","timeElapsed":478,"timestamp":"2026-04-14T19:48:55.572Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":316,"timestamp":"2026-04-14T19:48:55.890Z"}
+{"level":"info","message":"⌛ Validating guiaNum01.wlk","timeElapsed":242,"timestamp":"2026-04-14T19:48:56.179Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":309,"timestamp":"2026-04-14T19:50:44.630Z"}
+{"level":"info","message":"⌛ Validating guiaNum01.wlk","timeElapsed":279,"timestamp":"2026-04-14T19:50:45.051Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":480,"timestamp":"2026-04-14T19:51:06.742Z"}
+{"level":"info","message":"⌛ Validating testExample.wtest","timeElapsed":337,"timestamp":"2026-04-14T19:51:07.198Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":282,"timestamp":"2026-04-14T19:51:26.536Z"}
+{"level":"info","message":"⌛ Validating guiaNum01.wlk","timeElapsed":330,"timestamp":"2026-04-14T19:51:26.975Z"}
+{"level":"info","message":"⌛ Validating testExample.wtest","timeElapsed":611,"timestamp":"2026-04-14T19:51:27.588Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":313,"timestamp":"2026-04-14T19:51:29.291Z"}
+{"level":"info","message":"⌛ Validating guiaNum01.wlk","timeElapsed":297,"timestamp":"2026-04-14T19:51:29.616Z"}
+{"level":"info","message":"⌛ Validating testExample.wtest","timeElapsed":198,"timestamp":"2026-04-14T19:51:29.814Z"}
+{"level":"info","message":"🧪 Test runner executed on c:\\Users\\EDUCACION UNAHUR\\Desktop\\Hernan\\Objetos 1 - 2026C1\\n. Ejercicios de cursada","result":{"errored":0,"failed":0,"ok":1},"testsFailed":[],"timeElapsed":1934,"timestamp":"2026-04-14T19:51:47.701Z"}

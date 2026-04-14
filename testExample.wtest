@@ -1,0 +1,43 @@
+import guiaNum01.*
+
+describe "group of tests for Guia #01" {
+
+  // test "Ej#01. Luego de una secuencia dada, el resultado es 12" {
+  //   contador.valorActual(10)
+  //   contador.inc()
+  //   contador.inc()
+  //   contador.dec()
+  //   contador.inc()
+  //   assert.equals(12, contador.valorActual())
+  // }
+
+  // test "Ej#02. Luego de una secuencia dada, el ultimo comando debe ser incremento" {
+  //   contador.valorActual(10)
+  //   contador.inc()
+  //   contador.inc()
+  //   contador.dec()
+  //   contador.inc()
+  //   assert.equals('incremento', contador.ultimoComando())
+  // }
+
+  // test "Ej#03. Luego de una secuencia dada con Pepita, en el REPL deberiamos ver 350" {
+  //   pepita.comer(100)
+  //   pepita.volar(10)
+  //   pepita.volar(20)
+  //   assert.equals(350, pepita.energia())
+  // }
+
+  // test "Ej#04. Luego de una secuencia dada con Pepita, en el REPL deberiamos ver 340" {
+  //   pepita.comer(85)
+  //   assert.equals(340, pepita.energia())
+  // }
+
+  test "Ej#05. Luego de una secuencia dada con Calculadora, debe arrojar 24" {
+  calculadora.cargar(0)
+  calculadora.sumar(4)
+  calculadora.multiplicar(5)
+  calculadora.restar(8)
+  calculadora.multiplicar(2)
+  assert.equals(24, calculadora.valorActual())
+  }
+} 
