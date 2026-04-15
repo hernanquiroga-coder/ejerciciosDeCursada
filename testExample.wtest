@@ -86,13 +86,27 @@ describe "group of tests for Guia #01" {
   //   assert.equals('890', teclado.numeroIngresado())
   // }
 
-  test "Ej#07. Probamos el contador de llamadas" {
-    teclado.agregarDigito(8)
-    teclado.agregarDigito(9)
-    teclado.agregarDigito(0)
-    teclado.agregarDigito(2)
-    teclado.agregarDigito(7)
-    teclado.llamar()
-    assert.equals(1, teclado.cantLlamadas())
+  // test "Ej#07. Probamos el contador de llamadas" {
+  //   teclado.agregarDigito(8)
+  //   teclado.agregarDigito(9)
+  //   teclado.agregarDigito(0)
+  //   teclado.agregarDigito(2)
+  //   teclado.agregarDigito(7)
+  //   teclado.llamar()
+  //   assert.equals(1, teclado.cantLlamadas())
+  // }
+
+  test "Ej#08. Despues de cierta secuencia, la potencia del enterprise es 66" {
+    enterprise.encontrarPilaAtomica()
+    enterprise.recibirAtaque(14)
+    enterprise.encontrarEscudo()
+    assert.equals(66, enterprise.potencia())
+  }
+
+  test "Ej#08. Despues de cierta secuencia, el nivel de coraza del enterprise es 10" {
+    enterprise.encontrarPilaAtomica()
+    enterprise.recibirAtaque(14)
+    enterprise.encontrarEscudo()
+    assert.equals(10, enterprise.coraza())
   }
 } 

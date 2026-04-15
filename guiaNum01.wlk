@@ -120,28 +120,127 @@
 
 // Ej#07
 
-    object teclado {
-        var numero = ''
-        var contador = 0
-        method esNumeroValido() = 
-            numero.size() == 5 || numero.size() == 7
-        method agregarDigito(_digito) {
-        numero = numero + _digito
-        }
-        method numeroIngresado() = numero
-        method llamar() {
-            if (self.esNumeroValido()) {
-                contador = contador + 1
-                numero = ''
-                return 'Llamando al ' + numero
-            } else {
-                return 'Número inválido'
+    // object teclado {
+    //     var numero = ''
+    //     var contador = 0
+    //     method esNumeroValido() = 
+    //         numero.size() == 5 || numero.size() == 7
+    //     method agregarDigito(_digito) {
+    //     numero = numero + _digito
+    //     }
+    //     method numeroIngresado() = numero
+    //     method llamar() {
+    //         if (self.esNumeroValido()) {
+    //             contador = contador + 1
+    //             numero = ''
+    //             return 'Llamando al ' + numero
+    //         } else {
+    //             return 'Número inválido'
+    //         }
+    //     }
+    //     method borrarUltimoDigito() {
+    //         if (numero.size() > 0) {
+    //             numero = numero.substring(0, numero.size() - 1)
+    //         }
+    //     }
+    //     method cantLlamadas() = contador
+    // }
+
+// EJ#08
+
+    // object enterprise {
+    //     var potencia = 50
+    //     var coraza = 5
+
+    //     // method encontrarseCon(_objetoDeEncuentro) {
+    //     //     self.aumentarPotenciaEn(_objetoDeEncuentro.bonusPotencia())
+    //     //     self.aumentarCorazaEn(_objetoDeEncuentro.bonusCoraza())
+    //     // }
+
+    //     method recibirAtaque(_puntosFuerzaAtaque) {
+    //         if (_puntosFuerzaAtaque > coraza) {
+    //             potencia = (potencia - (_puntosFuerzaAtaque - coraza)).max(0)
+    //             coraza = 0
+    //         }
+    //         else {
+    //             coraza = coraza - _puntosFuerzaAtaque
+    //         }
+    //     }
+
+    //     method aumentarPotenciaEn(_aumentoPotencia) {
+    //         potencia = potencia + _aumentoPotencia
+    //     }
+
+    //     method aumentarCorazaEn(_aumentoCoraza) {
+    //         coraza = coraza + _aumentoCoraza
+    //     }
+
+    //     method potencia() = potencia
+    //     method coraza() = coraza
+
+    //     method encontrarPilaAtomica() {
+    //         potencia += 25
+    //     }
+
+    //     method encontrarEscudo() {
+    //         coraza += 10
+    //     }
+    // }
+
+    // object pilaAtomica {
+    //     method bomusPotencia() = 25
+    //     method bomusCoraza() = 0
+    // }
+
+    // object escudo {
+    //     method bomusPotencia() = 0
+    //     method bomusCoraza() = 10
+    // }
+
+// EJ#09
+
+    object enterprise {
+        var potencia = 50
+        var coraza = 5
+
+        method recibirAtaque(_puntosFuerzaAtaque) {
+            if (_puntosFuerzaAtaque > coraza) {
+                potencia = (potencia - (_puntosFuerzaAtaque - coraza)).max(0)
+                coraza = 0
+            }
+            else {
+                coraza = coraza - _puntosFuerzaAtaque
             }
         }
-        method borrarUltimoDigito() {
-            if (numero.size() > 0) {
-                numero = numero.substring(0, numero.size() - 1)
+
+        method aumentarPotenciaEn(_aumentoPotencia) {
+            potencia = potencia + _aumentoPotencia
+        }
+
+        method aumentarCorazaEn(_aumentoCoraza) {
+            coraza = coraza + _aumentoCoraza
+        }
+
+        method potencia() = potencia
+        method coraza() = coraza
+
+        method encontrarPilaAtomica() {
+            potencia += 25
+        }
+
+        method encontrarEscudo() {
+            coraza += 10
+        }
+
+        method fortalezaDefensiva() = coraza + potencia
+        method necesitaFortalecerse() = coraza == 0 && potencia < 20
+        method fortalezaOfensiva() {
+            if (potencia < 20) {
+                return 0
+            }
+            else {
+                return (potencia - 20) / 2 
             }
         }
-        method cantLlamadas() = contador
     }
+
