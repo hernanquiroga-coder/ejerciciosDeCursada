@@ -80,6 +80,7 @@
     // }
 
 // Ej#05
+
     object calculadora {
         var onDisplay = 0
         method cargar(_numero) {
@@ -98,20 +99,49 @@
     }
 
 // Ej#06
-object teclado {
-    var numero = ''
-    method esNumeroValido() = 
-        numero.size() == 5 || numero.size() == 7
-    method agregarDigito(_digito) {
-      numero = numero + _digito
+
+    // object teclado {
+    //     var numero = ''
+    //     method esNumeroValido() = 
+    //         numero.size() == 5 || numero.size() == 7
+    //     method agregarDigito(_digito) {
+    //     numero = numero + _digito
+    //     }
+    //     method numeroIngresado() = numero
+    //     method llamar() {
+    //     if (self.esNumeroValido()) {
+    //         numero = ''
+    //         return 'Llamando al ' + numero
+    //     } else {
+    //         return 'Número inválido'
+    //     }
+    //     }
+    // }
+
+// Ej#07
+
+    object teclado {
+        var numero = ''
+        var contador = 0
+        method esNumeroValido() = 
+            numero.size() == 5 || numero.size() == 7
+        method agregarDigito(_digito) {
+        numero = numero + _digito
+        }
+        method numeroIngresado() = numero
+        method llamar() {
+            if (self.esNumeroValido()) {
+                contador = contador + 1
+                numero = ''
+                return 'Llamando al ' + numero
+            } else {
+                return 'Número inválido'
+            }
+        }
+        method borrarUltimoDigito() {
+            if (numero.size() > 0) {
+                numero = numero.substring(0, numero.size() - 1)
+            }
+        }
+        method cantLlamadas() = contador
     }
-    method numeroIngresado() = numero
-    method llamar() {
-      if (self.esNumeroValido()) {
-        numero = ''
-        return 'Llamando al ' + numero
-      } else {
-        return 'Número inválido'
-      }
-    }
-}

@@ -44,14 +44,14 @@ describe "group of tests for Guia #01" {
 //   assert.equals(24, calculadora.valorActual())
 //   }
 
-  // test "Ej#05. Luego de una secuencia en el teclado, debe arrojar el numero marcado" {
+  // test "Ej#06. Luego de una secuencia en el teclado, debe arrojar el numero marcado" {
   //   teclado.agregarDigito(8)
   //   teclado.agregarDigito(9)
   //   teclado.agregarDigito(0)
   //   teclado.agregarDigito(2)
   //   assert.equals('8902', teclado.numeroIngresado())
   // }
-  // test "Ej#05. Luego de una secuencia en el teclado, de 4 digitos, evaluamos que evalua si un numero es valido" {
+  // test "Ej#06. Luego de una secuencia en el teclado, de 4 digitos, evaluamos que evalua si un numero es valido" {
   //   teclado.agregarDigito(8)
   //   teclado.agregarDigito(9)
   //   teclado.agregarDigito(0)
@@ -59,7 +59,7 @@ describe "group of tests for Guia #01" {
   //   assert.notThat(teclado.esNumeroValido())
   // }
   
-  // test "Ej#05. Luego de una secuencia en el teclado, de 5 digitos, evaluamos que evalua si un numero es valido" {
+  // test "Ej#06. Luego de una secuencia en el teclado, de 5 digitos, evaluamos que evalua si un numero es valido" {
   //   teclado.agregarDigito(8)
   //   teclado.agregarDigito(9)
   //   teclado.agregarDigito(0)
@@ -68,7 +68,7 @@ describe "group of tests for Guia #01" {
   //   assert.that(teclado.esNumeroValido())
   // }
   
-  // test "Ej#05. Luego de una secuencia en el teclado, de 5 digitos, y al llamar, limpia el numero" {
+  // test "Ej#06. Luego de una secuencia en el teclado, de 5 digitos, y al llamar, limpia el numero" {
   //   teclado.agregarDigito(8)
   //   teclado.agregarDigito(9)
   //   teclado.agregarDigito(0)
@@ -77,4 +77,22 @@ describe "group of tests for Guia #01" {
   //   teclado.llamar()
   //   assert.equals('', teclado.numeroIngresado())
   // }
+  // test "Ej#07. Probamos que funcione el borrado de digitos en el teclado" {
+  //   teclado.agregarDigito(8)
+  //   teclado.agregarDigito(9)
+  //   teclado.agregarDigito(0)
+  //   teclado.agregarDigito(2)
+  //   teclado.borrarUltimoDigito()
+  //   assert.equals('890', teclado.numeroIngresado())
+  // }
+
+  test "Ej#07. Probamos el contador de llamadas" {
+    teclado.agregarDigito(8)
+    teclado.agregarDigito(9)
+    teclado.agregarDigito(0)
+    teclado.agregarDigito(2)
+    teclado.agregarDigito(7)
+    teclado.llamar()
+    assert.equals(1, teclado.cantLlamadas())
+  }
 } 
