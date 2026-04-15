@@ -80,7 +80,6 @@
     // }
 
 // Ej#05
-
     object calculadora {
         var onDisplay = 0
         method cargar(_numero) {
@@ -99,7 +98,20 @@
     }
 
 // Ej#06
-
 object teclado {
-  
+    var numero = ''
+    method esNumeroValido() = 
+        numero.size() == 5 || numero.size() == 7
+    method agregarDigito(_digito) {
+      numero = numero + _digito
+    }
+    method numeroIngresado() = numero
+    method llamar() {
+      if (self.esNumeroValido()) {
+        numero = ''
+        return 'Llamando al ' + numero
+      } else {
+        return 'Número inválido'
+      }
+    }
 }

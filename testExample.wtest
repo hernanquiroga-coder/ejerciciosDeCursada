@@ -1,3 +1,6 @@
+// Programación con Objetos 1
+// Objeto, mensaje, método, variable, testing
+
 import guiaNum01.*
 
 describe "group of tests for Guia #01" {
@@ -32,12 +35,46 @@ describe "group of tests for Guia #01" {
   //   assert.equals(340, pepita.energia())
   // }
 
-  test "Ej#05. Luego de una secuencia dada con Calculadora, debe arrojar 24" {
-  calculadora.cargar(0)
-  calculadora.sumar(4)
-  calculadora.multiplicar(5)
-  calculadora.restar(8)
-  calculadora.multiplicar(2)
-  assert.equals(24, calculadora.valorActual())
-  }
+//   test "Ej#05. Luego de una secuencia dada con Calculadora, debe arrojar 24" {
+//   calculadora.cargar(0)
+//   calculadora.sumar(4)
+//   calculadora.multiplicar(5)
+//   calculadora.restar(8)
+//   calculadora.multiplicar(2)
+//   assert.equals(24, calculadora.valorActual())
+//   }
+
+  // test "Ej#05. Luego de una secuencia en el teclado, debe arrojar el numero marcado" {
+  //   teclado.agregarDigito(8)
+  //   teclado.agregarDigito(9)
+  //   teclado.agregarDigito(0)
+  //   teclado.agregarDigito(2)
+  //   assert.equals('8902', teclado.numeroIngresado())
+  // }
+  // test "Ej#05. Luego de una secuencia en el teclado, de 4 digitos, evaluamos que evalua si un numero es valido" {
+  //   teclado.agregarDigito(8)
+  //   teclado.agregarDigito(9)
+  //   teclado.agregarDigito(0)
+  //   teclado.agregarDigito(2)
+  //   assert.notThat(teclado.esNumeroValido())
+  // }
+  
+  // test "Ej#05. Luego de una secuencia en el teclado, de 5 digitos, evaluamos que evalua si un numero es valido" {
+  //   teclado.agregarDigito(8)
+  //   teclado.agregarDigito(9)
+  //   teclado.agregarDigito(0)
+  //   teclado.agregarDigito(2)
+  //   teclado.agregarDigito(3)
+  //   assert.that(teclado.esNumeroValido())
+  // }
+  
+  // test "Ej#05. Luego de una secuencia en el teclado, de 5 digitos, y al llamar, limpia el numero" {
+  //   teclado.agregarDigito(8)
+  //   teclado.agregarDigito(9)
+  //   teclado.agregarDigito(0)
+  //   teclado.agregarDigito(2)
+  //   teclado.agregarDigito(3)
+  //   teclado.llamar()
+  //   assert.equals('', teclado.numeroIngresado())
+  // }
 } 
