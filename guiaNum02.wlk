@@ -3,80 +3,97 @@
 
 // Ej#01 - The incredible machine
 
-    object pelota {
-        method caer() {linterna.encender()}
+    // object pelota {
+    //     method caer() {linterna.encender()}
+    // }
+
+    // object linterna {
+    //     method encender() {lupa.iluminar()}
+    // }
+
+    // object lupa {
+    //     method iluminar() {vela.prender()}
+    // }
+
+    // object vela {
+    //     var encendida = false
+    //     method prender() {encendida = true}
+    //     method encendida() = encendida
+    // }
+
+// Ej#02 - Pepita independiente
+
+    // object pepita {
+    //     var energia = 0
+        
+    //     method comer(_gramos) {energia = energia + _gramos * 4}
+    //     method volar(_km) {energia = energia - (1 * _km + self.costoDespegueAterrizaje())}
+    //     method energia() = energia
+    //     method costoDespegueAterrizaje() = 10
+    //     method estaDebil() = energia < 50
+    //     method estaFeliz() = energia.between(500, 1000)
+    //     method consumoBaseDeVuelo() = energia / 5
+    //     method cuantoQuiereVolar() {
+    //         if (energia.between(300, 400) && energia % 20 == 0) {
+    //             return self.consumoBaseDeVuelo() + 10 + 15
+    //         }
+    //         else if (energia.between(300, 400)) {
+    //             return self.consumoBaseDeVuelo() + 10
+    //         }
+    //         else {
+    //             return self.consumoBaseDeVuelo()
+    //         }
+    //     }
+    //     method haceLoQueQuieras() {
+    //         if (self.estaDebil()) {
+    //             self.comer(20)
+    //         }
+    //         if (self.estaFeliz()) {
+    //             self.volar(self.cuantoQuiereVolar())
+    //         }
+    //     }
+    // }
+
+// Ej#03 - Calculadora avanzada
+
+    object calculadora {
+        var onDisplay = 0
+        var onMemory = 0
+        var buffer = 0
+
+        method cargar(_numero) {
+            buffer = onDisplay
+            onDisplay = _numero
+        }
+
+        method sumar(_numero) {
+            buffer = onDisplay
+            onDisplay = _numero + onDisplay
+        }
+
+        method restar(_numero) {
+            buffer = onDisplay
+            onDisplay = onDisplay - _numero
+        }
+
+        method multiplicar(_numero) {
+            buffer = onDisplay
+            onDisplay = _numero * onDisplay
+        }
+
+        method valorActual() = onDisplay
+
+        method cargarMemoria() {onMemory = self.valorActual()}
+        method limpiarMemoria() {onMemory = 0}
+        method memoria() {return onMemory}
+        method sumarMemoria() {self.sumar(onMemory)}
+        method restarMemoria() {self.restar(onMemory)}
+        method multiplicarMemoria() {self.multiplicar(onMemory)}
+
+        method deshacer() {
+            onDisplay = buffer
+        }
     }
-
-    object linterna {
-        method encender() {lupa.iluminar()}
-    }
-
-    object lupa {
-        method iluminar() {vela.prender()}
-    }
-
-    object vela {
-        var encendida = false
-        method prender() {encendida = true}
-        method encendida() = encendida
-    }
-
-// // Ej#02
-
-//     object pepita() {
-//         var energia = 0
-//         method comer(gramosComida) {energia = energia + gramosComida * 4}
-//         method volar(kilometros) {energia = energia - 10 -  1 * kilometros}
-//         method energia() {return energia}
-//         method estaDebil() {return energia < 50}
-//         method estaFeliz() {return energia > 50 && energia > 50}
-//         method cuantoQuiereVolar() {
-//             if ((energia > 300 && energia < 400) && (energia % 20 == 0)) {
-//                 return (energia / 5 + 10 + 15)
-//             }
-//             elseif ((energia > 300 && energia < 400)) {
-//                 return (energia / 5 + 10)
-//             }
-//             else {
-//                 return (energia / 5 )
-//             }
-//         }
-//         method haceLoQueQuieras() {
-//             if self.estaDebil() {self.comer(20)}
-//             if self.estaFeliz() {self.volar(self.cuantoQuiereVolar())}
-//         }
-//     }
-
-// // Ej#03
-
-//     object calculadora() {
-//         var valorDisplay = 0
-//         var memoria     
-//         var ultimoValor = 0
-//         method cargar(numero) {valorDisplay = numero}
-//         method sumar(numero) {
-//             ultimoValor = valorDisplay
-//             valorDisplay = valorDisplay + numero
-//             }
-//         method restar(numero) {
-//             ultimoValor = valorDisplay
-//             valorDisplay = valorDisplay - numero
-//             }
-//         method multiplicar(numero) {
-//             ultimoValor = valorDisplay
-//             valorDisplay = valorDisplay * numero
-//             }
-//         method valorActual() {return valorDisplay}
-//         method cargarMemoria() {memoria = valorDisplay}
-//         method limpiarMemoria() {memoria = 0}
-//         method memoria() {return memoria}
-//         method sumarMemoria() {valorDisplay = valorDisplay + memoria}
-//         method restarMemoria() {valorDisplay = valorDisplay - memoria}
-//         method multiplicarMemoria() {valorDisplay = valorDisplay * memoria}
-//         method deshacer() {
-//             valorDisplay = ultimoValor  
-//         }
-//     }
 
 // // Ej#04
 
