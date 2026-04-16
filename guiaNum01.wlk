@@ -199,48 +199,89 @@
 
 // EJ#09
 
-    object enterprise {
-        var potencia = 50
-        var coraza = 5
+    // object enterprise {
+    //     var potencia = 50
+    //     var coraza = 5
 
-        method recibirAtaque(_puntosFuerzaAtaque) {
-            if (_puntosFuerzaAtaque > coraza) {
-                potencia = (potencia - (_puntosFuerzaAtaque - coraza)).max(0)
-                coraza = 0
+    //     method recibirAtaque(_puntosFuerzaAtaque) {
+    //         if (_puntosFuerzaAtaque > coraza) {
+    //             potencia = (potencia - (_puntosFuerzaAtaque - coraza)).max(0)
+    //             coraza = 0
+    //         }
+    //         else {
+    //             coraza = coraza - _puntosFuerzaAtaque
+    //         }
+    //     }
+
+    //     method aumentarPotenciaEn(_aumentoPotencia) {
+    //         potencia = potencia + _aumentoPotencia
+    //     }
+
+    //     method aumentarCorazaEn(_aumentoCoraza) {
+    //         coraza = coraza + _aumentoCoraza
+    //     }
+
+    //     method potencia() = potencia
+    //     method coraza() = coraza
+
+    //     method encontrarPilaAtomica() {
+    //         potencia += 25
+    //     }
+
+    //     method encontrarEscudo() {
+    //         coraza += 10
+    //     }
+
+    //     method fortalezaDefensiva() = coraza + potencia
+    //     method necesitaFortalecerse() = coraza == 0 && potencia < 20
+    //     method fortalezaOfensiva() {
+    //         if (potencia < 20) {
+    //             return 0
+    //         }
+    //         else {
+    //             return (potencia - 20) / 2 
+    //         }
+    //     }
+    // }
+
+// EJ#10b
+
+    object motor {
+        var cambio = 1
+        var revoluciones = 5000
+        const consumoBase = 0.05
+
+        method velocidad() = (revoluciones / 100) * (0.5 + cambio / 2)
+        method consumoActualPorKm() {
+            var seConsume = consumoBase
+            if (revoluciones > 3000) {
+                seConsume = consumoBase * ((revoluciones - 2500) / 500)
             }
-            else {
-                coraza = coraza - _puntosFuerzaAtaque
+            if (cambio == 1) {
+                seConsume = seConsume * 3
             }
-        }
-
-        method aumentarPotenciaEn(_aumentoPotencia) {
-            potencia = potencia + _aumentoPotencia
-        }
-
-        method aumentarCorazaEn(_aumentoCoraza) {
-            coraza = coraza + _aumentoCoraza
-        }
-
-        method potencia() = potencia
-        method coraza() = coraza
-
-        method encontrarPilaAtomica() {
-            potencia += 25
-        }
-
-        method encontrarEscudo() {
-            coraza += 10
-        }
-
-        method fortalezaDefensiva() = coraza + potencia
-        method necesitaFortalecerse() = coraza == 0 && potencia < 20
-        method fortalezaOfensiva() {
-            if (potencia < 20) {
-                return 0
+            if (cambio == 2) {
+                seConsume = seConsume * 2
             }
-            else {
-                return (potencia - 20) / 2 
-            }
+            return seConsume
+        }
+        method subirCambio() {
+            cambio += 1
+        }
+        method bajarCambio() {
+            cambio -= 1
+        }
+        method arrancar() {
+            cambio = 1
+            revoluciones = 500
+        }
+        method subirRPM(_cantUp) {
+            revoluciones += _cantUp
+        }
+        method bajarRPM(_cantDown) {
+            revoluciones -= _cantDown
         }
     }
+
+
 

@@ -96,17 +96,21 @@ describe "group of tests for Guia #01" {
   //   assert.equals(1, teclado.cantLlamadas())
   // }
 
-  test "Ej#08. Despues de cierta secuencia, la potencia del enterprise es 66" {
-    enterprise.encontrarPilaAtomica()
-    enterprise.recibirAtaque(14)
-    enterprise.encontrarEscudo()
-    assert.equals(66, enterprise.potencia())
-  }
+  // test "Ej#08. Despues de cierta secuencia, la potencia del enterprise es 66" {
+  //   enterprise.encontrarPilaAtomica()
+  //   enterprise.recibirAtaque(14)
+  //   enterprise.encontrarEscudo()
+  //   assert.equals(66, enterprise.potencia())
+  // }
 
-  test "Ej#08. Despues de cierta secuencia, el nivel de coraza del enterprise es 10" {
-    enterprise.encontrarPilaAtomica()
-    enterprise.recibirAtaque(14)
-    enterprise.encontrarEscudo()
-    assert.equals(10, enterprise.coraza())
+  // test "Ej#08. Despues de cierta secuencia, el nivel de coraza del enterprise es 10" {
+  //   enterprise.encontrarPilaAtomica()
+  //   enterprise.recibirAtaque(14)
+  //   enterprise.encontrarEscudo()
+  //   assert.equals(10, enterprise.coraza())
+  // }
+
+  test "Ej#10. El motor estando en 1ra a 5000 RPM, su consumo debe ser de 0.75 litros/km" {
+      assert.equals(0.75, motor.consumoActualPorKm()) 
   }
 } 
