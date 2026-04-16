@@ -2,8 +2,9 @@
 // Objeto, mensaje, método, variable, testing
 
 import guiaNum01.*
+import guiaNum02.*
 
-describe "group of tests for Guia #01" {
+// describe "group of tests for Guia #01" {
 
   // test "Ej#01. Luego de una secuencia dada, el resultado es 12" {
   //   contador.valorActual(10)
@@ -35,14 +36,14 @@ describe "group of tests for Guia #01" {
   //   assert.equals(340, pepita.energia())
   // }
 
-//   test "Ej#05. Luego de una secuencia dada con Calculadora, debe arrojar 24" {
-//   calculadora.cargar(0)
-//   calculadora.sumar(4)
-//   calculadora.multiplicar(5)
-//   calculadora.restar(8)
-//   calculadora.multiplicar(2)
-//   assert.equals(24, calculadora.valorActual())
-//   }
+  //   test "Ej#05. Luego de una secuencia dada con Calculadora, debe arrojar 24" {
+  //   calculadora.cargar(0)
+  //   calculadora.sumar(4)
+  //   calculadora.multiplicar(5)
+  //   calculadora.restar(8)
+  //   calculadora.multiplicar(2)
+  //   assert.equals(24, calculadora.valorActual())
+  //   }
 
   // test "Ej#06. Luego de una secuencia en el teclado, debe arrojar el numero marcado" {
   //   teclado.agregarDigito(8)
@@ -110,7 +111,16 @@ describe "group of tests for Guia #01" {
   //   assert.equals(10, enterprise.coraza())
   // }
 
-  test "Ej#10. El motor estando en 1ra a 5000 RPM, su consumo debe ser de 0.75 litros/km" {
-      assert.equals(0.75, motor.consumoActualPorKm()) 
+  // test "Ej#10. El motor estando en 1ra a 5000 RPM, su consumo debe ser de 0.75 litros/km" {
+  //     assert.equals(0.75, motor.consumoActualPorKm()) 
+  // }
+// } 
+
+describe "group of tests for Guia #02" {
+
+  test "Ej#01. Luego de una secuencia dada, la vela debe estar encendida" {
+    pelota.caer()
+    vela.prender()
+    assert.that(vela.encendida())
   }
-} 
+}
