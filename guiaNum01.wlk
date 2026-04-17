@@ -244,7 +244,7 @@
     //     }
     // }
 
-// EJ#10b
+// EJ#10
 
     object motor {
         var cambio = 1

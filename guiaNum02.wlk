@@ -55,262 +55,328 @@
     // }
 
 // Ej#03 - Calculadora avanzada
+    // object calculadora {
+    //     var onDisplay = 0
+    //     var onMemory = 0
+    //     var buffer = 0
 
-    object calculadora {
-        var onDisplay = 0
-        var onMemory = 0
-        var buffer = 0
+    //     method cargar(_numero) {
+    //         buffer = onDisplay
+    //         onDisplay = _numero
+    //     }
 
-        method cargar(_numero) {
-            buffer = onDisplay
-            onDisplay = _numero
+    //     method sumar(_numero) {
+    //         buffer = onDisplay
+    //         onDisplay = _numero + onDisplay
+    //     }
+
+    //     method restar(_numero) {
+    //         buffer = onDisplay
+    //         onDisplay = onDisplay - _numero
+    //     }
+
+    //     method multiplicar(_numero) {
+    //         buffer = onDisplay
+    //         onDisplay = _numero * onDisplay
+    //     }
+
+    //     method valorActual() = onDisplay
+
+    //     method cargarMemoria() {onMemory = self.valorActual()}
+    //     method limpiarMemoria() {onMemory = 0}
+    //     method memoria() {return onMemory}
+    //     method sumarMemoria() {self.sumar(onMemory)}
+    //     method restarMemoria() {self.restar(onMemory)}
+    //     method multiplicarMemoria() {self.multiplicar(onMemory)}
+
+    //     method deshacer() {
+    //         onDisplay = buffer
+    //     }
+    // }
+
+// // Ej#04 - Juieguitos
+
+    // object pepe {
+    //     var record = 0
+    //     method jueguito() {contador.inc()}
+    //     method pique() {
+    //         if (contador.valorActual() > record) {record = contador.valorActual()}
+    //         contador.reset()
+    //     }
+    //     method acumulado() = contador.valorActual()
+    //     method record() = record
+    // }
+
+    // object contador {
+    //     var valorActual = 0
+    //     method reset() {valorActual = 0}
+    //     method inc() {valorActual = valorActual + 1}
+    //     method dec() {valorActual = 0.max(valorActual - 1)}
+    //     method valorActual() {return valorActual}
+    //     method valorActual(nuevoValorActual) {valorActual = nuevoValorActual}
+    // }   
+
+// Ej#05: Agregados al Enterprise
+
+    // object enterprise {
+    //     var potencia = 50
+    //     var coraza = 5
+
+    //     var seEncontroConPila = false
+    //     var seEncontroConEscudo = false
+
+    //     method recibirAtaque(_puntosFuerzaAtaque) {
+    //         if (_puntosFuerzaAtaque > coraza) {
+    //             potencia = (potencia - (_puntosFuerzaAtaque - coraza)).max(0)
+    //             coraza = 0
+    //         }
+    //         else {
+    //             coraza = coraza - _puntosFuerzaAtaque
+    //         }
+    //     }
+
+    //     method aumentarPotenciaEn(_aumentoPotencia) {
+    //         potencia = potencia + _aumentoPotencia
+    //     }
+
+    //     method aumentarCorazaEn(_aumentoCoraza) {
+    //         coraza = coraza + _aumentoCoraza
+    //     }
+
+    //     method potencia() = potencia
+    //     method coraza() = coraza
+
+
+    //     method fortalezaDefensiva() = coraza + potencia
+    //     method necesitaFortalecerse() = coraza == 0 && potencia < 20
+    //     method fortalezaOfensiva() {
+    //         if (potencia < 20) {
+    //             return 0
+    //         }
+    //         else {
+    //             return (potencia - 20) / 2 
+    //         }
+    //     }
+
+    //     method seLaBanca() = 
+    //         not self.necesitaFortalecerse() && self.fortalezaDefensiva() > 30
+    
+    //     method diaDeSuerte() = seEncontroConPila && seEncontroConEscudo
+
+    //     method recibirDobleAtaque(puntosAtaque1, puntosAtaque2) {
+    //         self.recibirAtaque(puntosAtaque1)
+    //         self.recibirAtaque(puntosAtaque2)
+    //     }
+
+    //     // method encontrarPilaAtomica() {
+    //     //     potencia += 25
+    //     //     seEncontroConPila = true
+    //     // }
+
+    //     // method encontrarEscudo() {
+    //     //     coraza += 10
+    //     //     seEncontroConEscudo = true
+    //     // }
+
+    //     method encontrar(_unaCosa) {    
+    //         self.aumentarPotenciaEn(_unaCosa.bonusPotencia())
+    //         self.aumentarCorazaEn(_unaCosa.bonusCoraza())
+    //         _unaCosa.atacar(self)
+    //     }
+    // }
+
+    // object pilaAtomica {
+    //     method bonusPotencia() = 25
+    //     method bonusCoraza() = 0
+    //     method atacar(_objetivo) { /* no hace nada */ }
+    // }
+    // object escudo {
+    //     method bonusPotencia() = 0
+    //     method bonusCoraza() = 10
+    //     method atacar(_objetivo) { /* no hace nada */ }
+    // }
+    // object khan {
+    //     method bonusPotencia() = 0
+    //     method bonusCoraza() = 0
+    //     method atacar(_objetivo) {_objetivo.recibirAtaque(50) }
+    // }
+    // object reinaBorg {
+    //     method bonusPotencia() = 25
+    //     method bonusCoraza() = 0
+    //     method atacar(_objetivo) { 
+    //         _objetivo.recibirDobleAtaque(30, 70) 
+    //         }
+    // }
+
+// // Ej#06 - Pepita turista
+
+    // object pepita {
+    //     var energia = 100   
+        
+    //     method comer(_gramos) {energia = energia + _gramos * 4}
+    //     method volar(_km) {energia = energia - (1 * _km + self.costoDespegueAterrizaje())}
+    //     method energia() = energia
+    //     method costoDespegueAterrizaje() = 10
+    //     method estaDebil() = energia < 50
+    //     method estaFeliz() = energia.between(500, 1000)
+    //     method consumoBaseDeVuelo() = energia / 5
+    //     method cuantoQuiereVolar() {
+    //         if (energia.between(300, 400) && energia % 20 == 0) {
+    //             return
+    //                 self.consumoBaseDeVuelo() + 10 + 15
+    //         }
+    //         else if (energia.between(300, 400)) {
+    //             return 
+    //                 self.consumoBaseDeVuelo() + 10
+    //         }
+    //         else 
+    //             {
+    //                 self.consumoBaseDeVuelo()
+    //             }
+    //     }
+
+    //     method vacacionar(_destino) {
+    //         energia += _destino.energiaRevitalizadora()
+    //     }
+
+    //     method haceLoQueQuieras() {
+    //         self.comer(1000)
+    //     }
+    // }
+
+    // object patagonia {
+    //     method energiaRevitalizadora() = 30
+    //     }
+
+    // object sierrasCordobesas {
+    //     method energiaRevitalizadora() = 70
+    //     }
+
+    // object marDelPlata {
+    //     var temporadaBaja = true
+    //     // method energiaRevitalizadora() {
+    //     //     if (temporadaBaja)  {return 80}
+    //     //     else                {return -20}
+    //     // }
+    //     method energiaRevitalizadora() = if (temporadaBaja) 80 else -20
+    //     method cambiarAAlta() {temporadaBaja = false}
+    //     method cambiarABaja() {temporadaBaja = true}
+    // }
+
+    // object noroeste {
+    //     method energiaRevitalizadora() = 
+    //         0.1 * pepita.energia()
+    // }
+
+// Ej#07 - Entrenamiento
+
+    // Parte 1: Entrenamiento de Pepita
+
+    // object roque {
+    //     method entrenar() {
+    //         pepita.volar(10)
+    //         pepita.comer(300)
+    //         pepita.volar(5)
+    //         pepita.haceLoQueQuieras()
+    //     }
+    //     method entrenar(_pajaro) {
+    //         _pajaro.volar(10)
+    //         _pajaro.comer(300)
+    //         _pajaro.volar(5)
+    //         _pajaro.haceLoQueQuieras()
+    //     }
+    // }
+
+    // // Parte 2: Entrenamiento de otros pájaros
+
+    // object pepon {
+    //     var energia = 0
+    //     method comer(_gramos) {energia = energia + _gramos * 4 / 2}
+    //     method volar(_km) {energia = energia - 1 - 0.5 * _km}
+    //     method haceLoQueQuieras() {self.volar(1)}
+    // }
+
+    // object pipa {
+    //     var kmsRecorridos = 120
+    //     var caloriasIngeridas = 50
+    //     method kmsRecorridos() = kmsRecorridos
+    //     method caloriasIngeridas() = caloriasIngeridas
+    //     method aumentarCalorias(_cantAumentar) {caloriasIngeridas += _cantAumentar}
+    //     method volar(_km) {kmsRecorridos += _km}
+    //     method haceLoQueQuieras() { /* No hacer nada */ }
+    //     method comer(_gramos) {self.aumentarCalorias(0.1 * _gramos)}
+    // }
+
+// Ej#08 - Teclado Mejorado
+
+
+   // Parte 1: Diferenciar Llamadas
+
+    object telefono {
+        var numero = ''
+        var contador = 0
+        var cantLlamadasCelulares = 0
+        var cantLlamadasFijo = 0
+        var tiempoTotalACelulares = 0
+        var tiempoTotalAFijos = 0
+        var empresa = rhhh
+
+        method cambiarEmpresa(_nuevaEmpresa) {empresa = _nuevaEmpresa}
+
+        method esNumeroValido()     = numero.size() == 5 || numero.size() == 7
+        method esNumeroCelular()    = self.esNumeroValido() && numero.size() == 7
+        method esNumeroFijo()       = self.esNumeroValido() && numero.size() == 5
+        method agregarDigito(_digito) {numero = numero + _digito}
+        method numeroIngresado() = numero
+        method borrarUltimoDigito() {
+            if (numero.size() > 0) {
+                numero = numero.substring(0, numero.size() - 1)
+            }
         }
-
-        method sumar(_numero) {
-            buffer = onDisplay
-            onDisplay = _numero + onDisplay
+        method cantLlamadas() = contador
+        method cantLlamadasFijos() = cantLlamadasFijo
+        method cantLlamadasCelulares() = cantLlamadasCelulares
+        method llamar(_minutos) {
+            if (self.esNumeroValido()) {
+                contador = contador + 1
+                return 'Llamando al ' + numero
+                numero = ''
+                if (self.esNumeroFijo()) {
+                    cantLlamadasFijo += 1 
+                    tiempoTotalACelulares += _minutos
+                }
+                else {
+                    cantLlamadasCelulares +=1
+                    tiempoTotalAFijos += _minutos
+                }
+            } 
+            else {
+                return 'Número inválido'
+            }
         }
-
-        method restar(_numero) {
-            buffer = onDisplay
-            onDisplay = onDisplay - _numero
-        }
-
-        method multiplicar(_numero) {
-            buffer = onDisplay
-            onDisplay = _numero * onDisplay
-        }
-
-        method valorActual() = onDisplay
-
-        method cargarMemoria() {onMemory = self.valorActual()}
-        method limpiarMemoria() {onMemory = 0}
-        method memoria() {return onMemory}
-        method sumarMemoria() {self.sumar(onMemory)}
-        method restarMemoria() {self.restar(onMemory)}
-        method multiplicarMemoria() {self.multiplicar(onMemory)}
-
-        method deshacer() {
-            onDisplay = buffer
-        }
+        method tiempoTotalACeulares() = tiempoTotalACelulares        
+        method tiempoTotalAFijos() = tiempoTotalAFijos
+        
+        method totalFacturacion() = 
+            self.tiempoTotalACelulares() * empresa.precioACelulares() + 
+            self.tiempoTotalAFijos() * empresa.precioAFijos()
     }
 
-// // Ej#04
+    // Parte 2: Facturacion
 
-//     object contador() {
-//         var valorActual = 0
-//         method reset() {valorActual = 0}
-//         method inc() {valorActual = valorActual + 1}
-//         method dec() {valorActual = 0.max(valorActual - 1)}
-//         method valorActual() {return valorActual}
-//         method valorActual(nuevoValorActual) {valorActual = nuevoValorActual}
-//     }   
+        object rrhh {
+            method precioACelulares() = 0.7
+            method precioAFijos() = 0.45
+        }
+        object estrellaFugaz {
+            method precioACelulares() = 0.6
+            method precioAFijos() = 0.5 
+        }
 
-//     object pepe {
-//         var record = 0
-//         method jueguito() {contador.inc()}
-//         method pique() {
-//             if (contador.valorActual() > record) {record = contador.valorActual()}
-//             contador.reset()
-//         }
-//         method acumulado() {return contador.valorActual()}
-//         method record() {return record}
-//     }
-
-// // Ej#05
-
-//         // Parte 01
-        
-//         object enterprise() {
-//             var potencia =  50
-//             var coraza = 5
-//             method encontrarPilaAtomica() {potencia = (potencia + 25).min(100)}
-//             method encontrarEscudo() {coraza = (coraza + 10).min(20)}
-//             method recibirAtaque(puntosAtaque) {
-//                 coraza = (coraza - puntosAtaque).max(0)
-//                 resto = (puntosAtaque - coraza).max(0)
-//                 potencia = (potencia - resto).max(0)
-//             }
-//             method potencia() {return potencia}
-//             method coraza() {return coraza}
-//             method fortalezaDefensiva() {return potencia + coraza}
-//             method necesitaFortalecerse() {return coraza == 0 && potencia < 20}
-//             method fortalezaOfensiva() {
-//                 if (potencia < 20) {return 0}
-//                 else {return (potencia - 20) / 2}
-//             }
-//             method seLaBanca() {return(not(self.necesitaFortalecerse()) && (self.fortalezaDefensiva() > 30))}
-//             // method diaDeSuerte - Aca... ¿cómo hago, tengo que poder saber si tal objeto recibio esos dos mensajes alguna vez ... Creo que aca me marea lo de indica porque en realidad no es es un mensaje de consulta sino un mensaje de indicacion.
-
-//             method diaDeSuerte() {
-//                 self.encontrarEscudo()
-//                 self.encontrarPilaAtomica()
-//                 }
-//             method recibirDobleAtaque(puntosAtaque1, puntosAtaque2) {
-//                 self.recibirAtaque(puntosAtaque1)
-//                 self.recibirAtaque(puntosAtaque2)
-//             }
-//         }
-
-//         // Parte 02
-        
-//         object enterprise() {
-//             var potencia =  50
-//             var coraza = 5
-//             // method encontrarPilaAtomica() {potencia = (potencia + 25).min(100)}
-//             // method encontrarEscudo() {coraza = (coraza + 10).min(20)}
-//             method recibirAtaque(puntosAtaque) {
-//                 coraza = (coraza - puntosAtaque).max(0)
-//                 resto = (puntosAtaque - coraza).max(0)
-//                 potencia = (potencia - resto).max(0)
-//             }
-//             method potencia() {return potencia}
-//             method coraza() {return coraza}
-//             method fortalezaDefensiva() {return potencia + coraza}
-//             method necesitaFortalecerse() {return coraza == 0 && potencia < 20}
-//             method fortalezaOfensiva() {
-//                 if (potencia < 20) {return 0}
-//                 else {return (potencia - 20) / 2}
-//             }
-//             method seLaBanca() {return(not(self.necesitaFortalecerse()) && (self.fortalezaDefensiva() > 30))}
-        
-//             method diaDeSuerte() {
-//                 self.encontrarEscudo()
-//                 self.encontrarPilaAtomica()
-//                 }
-//             method recibirDobleAtaque(puntosAtaque1, puntosAtaque2) {
-//                 self.recibirAtaque(puntosAtaque1)
-//                 self.recibirAtaque(puntosAtaque2)
-//             }
-//             method encontrar(unaCosa) {
-//                 if (unaCosa = pilaAtomica) {potencia = (potencia + 25).min(100)}
-//                 if (unaCosa = escudo) {coraza = (coraza + 10).min(20)}
-//                 if (unaCosa = khan) {self.recibirAtaque(50)}
-//                 if (unaCosa = reinaBorg) {self.recibirDobleAtaque(30, 70)}
-//             }
-//         }
-
-//     objet pilaAtomica() {
-//         ...
-//     }
-
-//     objet escudo() {
-//         ...
-//     }
-
-//     objet khan() {
-//         ...
-//     }
-
-//     objet reinaBorg() {
-//         ...
-//     }
-
-// // Ej#06
-
-//     object pepita() {
-//         var energia = 0
-//         method comer(gramosComida) {energia = energia + gramosComida * 4}
-//         method volar(kilometros) {energia = energia - 10 -  1 * kilometros}
-//         method energia() {return energia}
-//         method estaDebil() {return energia < 50}
-//         method estaFeliz() {return energia > 50 && energia > 50}
-//         method cuantoQuiereVolar() {
-//             if ((energia > 300 && energia < 400) && (energia % 20 == 0)) {return (energia / 5 + 10 + 15)}
-//             elseif ((energia > 300 && energia < 400)) {return (energia / 5 + 10)}
-//             else {return (energia / 5 )}
-//         }
-//         method vacacionar(lugar) {energia += lugar.energiaRevitalizadora()}
-//     }
-
-//     object patagonia() {method energiaRevitalizadora() {return 30}}
-
-//     object sierrasCordobesas() {method energiaRevitalizadora() {return 30}}
-
-//     object marDelPlata() {
-//         var temporadaAlta = true
-//         method energiaRevitalizadora() {
-//             if (temporadaAlta)  {return 80}
-//             else                {return -20}
-//         }
-//     }
-
-//     object noroeste() {
-//         method energiaRevitalizadora() {return 0.1 * pepita.energia()}
-//     }
-
-// // Ej#07 - Entrenamiento
-
-//     // Parte 1: Entrenamiento de Pepita
-
-//     object roque() {
-//         method entrenar() {
-//             pepita.volar(10)
-//             pepita.comer(300)
-//             pepita.volar(5)
-//             pepita.haceLoQueQuieras()
-//         }
-//     }
-
-//     // Parte 2: Entrenamiento de otros pájaros
-
-//     objet pepon {
-//         var energia = 0
-//         method comer(gramosComida) {energia = energia + gramosComida * 4 / 2}
-//         method volar(kilometros) {energia = energia - 1 - 0.5 * kilometros}
-//         method haceLoQueQuieras() {self.volar(1)}
-//     }
-
-//     objet pipa {
-//         method kmsRecorridos() {...}
-//         method caloriasIngeridas() {...}
-//         method haceLoQueQuieras() { /* No hacer nada */ }
-//     }
-
-// // Ej#08 - Teclado Mejorado
-
-    
-//    // Parte 1: Diferenciar Llamadas
-
-//     objeto telefono {
-//         var llamadas = []    
-//         var visor = ''
-
-//         method cantLlamadasFijos() = llamadas.filter(call => call.esNumeroFijo()).size()
-//         method cantLlamadasCelular() = llamadas.filter(call => call.esNumeroCelular()).size()
-
-//         method llamar() {
-//             if (self.esNumeroValido())
-//                 llamadas.add(visor)
-//                 // agregarLlamada(_llamada) {llamadas.add(_llamada)}
-//                 visor = ''
-//         }
-//         method agregarDigito(digito) {visor = visor + digito}
-//         method esNumeroValido() {return (size(visor) == 5 || size(visor) == 7 && visor.startsWith('15'))}
-//         method borrarUltimoDigito {
-//             if (visor == '') {visor = ''}
-//             else {visor = visor.substring(0, size(numeroActual))}
-//         }
-//         method numeroIngresado() {return visor}
-//         method esNumeroCelular() {return self.numeroIngresado().startsWith('15') && size(self.numeroIngresado()) == 7} 
-//         method esNumeroFijo() {return size(self.numeroIngresado()) == 5} 
-//     }
-
-
-//     objeto rrhh() {
-//         method precioCelular() {return 0.7}
-//         method precioFijo() {return 0.45}
-//     }
-//     objeto estrellaFugaz() {
-//         method precioCelular() {return 0.6}
-//         method precioFijo() {return 0.5}
-//     }
-
-//    // Parte 2: Facturacion
 
 //     // Partimos de la seccion anterior ...
 
-//     objeto telefono {
+//     object telefono {
 //         var llamadas = [
 //                         llamadaCasaMama, 
 //                         llamadaPuestoRemoto, 

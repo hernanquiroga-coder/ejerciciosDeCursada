@@ -118,9 +118,42 @@ import guiaNum02.*
 
 describe "group of tests for Guia #02" {
 
-  test "Ej#01. Luego de una secuencia dada, la vela debe estar encendida" {
-    pelota.caer()
-    vela.prender()
-    assert.that(vela.encendida())
+  // test "Ej#01. Luego de una secuencia dada, la vela debe estar encendida" {
+  //   pelota.caer()
+  //   vela.prender()
+  //   assert.that(vela.encendida())
+  // }
+
+  // test "Ej#04. Pepe hace 3 jueguitos, se le cae y luego hace 2 jueguitos, record deberia indicar 3" {
+  //   pepe.jueguito()
+  //   pepe.jueguito()
+  //   pepe.jueguito()
+  //   pepe.pique()
+  //   pepe.jueguito()
+  //   pepe.jueguito()
+  //   assert.equals(3, pepe.record())
+  // }
+
+  // test "Ej#05. La enterprise arranca con potencia 50 y coraza 5" {
+  //   assert.equals(50, enterprise.potencia())
+  // }
+
+  // test "Ej#05. La enterprise arranca con potencia 50 y coraza 5" {
+  //   assert.equals(5, enterprise.coraza())
+  // }
+
+  // test "Ej#05. La enterprise es atacada por Khan, su ataque la deja sin escudo y con potencia 5" {
+  //   enterprise.encontrar(khan)
+  //   assert.equals(0, enterprise.coraza())
+  // }
+
+  // test "Ej#05. La enterprise es atacada por Khan, su ataque la deja sin escudo y con potencia 5" {
+  //   enterprise.encontrar(khan)
+  //   assert.equals(5, enterprise.potencia())
+  // }
+
+  test "Ej#06. Pepita con energia inicial 100 al vacionar en el Noroeste, queda revitalizada, y su energia queda en 110" {
+    pepita.vacionar(noroteste)
+    assert.equals(110, pepita.energia())
   }
 }
