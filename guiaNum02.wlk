@@ -318,7 +318,7 @@
         var cantLlamadasFijo = 0
         var tiempoTotalACelulares = 0
         var tiempoTotalAFijos = 0
-        var empresa = rhhh
+        var empresa = rrhh
 
         method cambiarEmpresa(_nuevaEmpresa) {empresa = _nuevaEmpresa}
 
@@ -338,140 +338,85 @@
         method llamar(_minutos) {
             if (self.esNumeroValido()) {
                 contador = contador + 1
-                return 'Llamando al ' + numero
-                numero = ''
                 if (self.esNumeroFijo()) {
-                    cantLlamadasFijo += 1 
-                    tiempoTotalACelulares += _minutos
-                }
-                else {
-                    cantLlamadasCelulares +=1
+                    cantLlamadasFijo = cantLlamadasFijo + 1
                     tiempoTotalAFijos += _minutos
                 }
+                else {
+                    cantLlamadasCelulares = cantLlamadasCelulares + 1
+                    tiempoTotalACelulares += _minutos
+                }
+                return 'Llamando al ' + numero
             } 
             else {
                 return 'Número inválido'
             }
+            numero = ''
         }
-        method tiempoTotalACeulares() = tiempoTotalACelulares        
-        method tiempoTotalAFijos() = tiempoTotalAFijos
+        method tiempoTotalACelulares() = tiempoTotalACelulares        
+        method tiempoTotalAFijos() = 
+            tiempoTotalAFijos - empresa.bonificacionEnTiempo()
         
         method totalFacturacion() = 
-            self.tiempoTotalACelulares() * empresa.precioACelulares() + 
-            self.tiempoTotalAFijos() * empresa.precioAFijos()
+            tiempoTotalACelulares * empresa.precioACelulares() * empresa.bonificacionEnPorcentajeACelulares(self)
+            + 
+            tiempoTotalAFijos * empresa.precioAFijos() * empresa.bonificacionEnPorcentajeAFijos(self)
+
+        method bonificacionFijosEnSeg(_segundos) = _segundos / 60 
     }
 
     // Parte 2: Facturacion
+    // Parte 3: Políticas de facturación por compañía
 
         object rrhh {
             method precioACelulares() = 0.7
             method precioAFijos() = 0.45
-        }
+            method bonificacionEnTiempo() = 1000 / 60       // devolvemos minutos
+            method bonificacionEnPorcentajeAFijos(_cliente) = 1
+            method bonificacionEnPorcentajeACelulares(_cliente) = 1
+            }
+           
         object estrellaFugaz {
             method precioACelulares() = 0.6
             method precioAFijos() = 0.5 
+            method bonificacionEnTiempo() = 0
+            method bonificacionEnPorcentajeAFijos(_cliente) {
+                if (_cliente.tiempoTotalAFijos() > 1500) {
+                    return 0.9
+                }
+                else {return 1}     // Esto es obligatorio por sintaxis
+
+            }
+            method bonificacionEnPorcentajeACelulares(_cliente) {
+                if (_cliente.cantLlamadasCelulares() > 120) {
+                    return 0.85
+                }
+                else {return 1}
+            }
         }
 
+// Ej#09 - Silvestre, Tweety y Speedy González
 
-//     // Partimos de la seccion anterior ...
+    object silvestre() {
+        var energia = 0
+        method velocidad() {return 5 + energía / 10}
+        method correr(_distancia) {energia -= 0.5 * _distancia * velocidad}
+        method comer(animal) {energia += animal.energiaAportada()}
+        method convieneComer(unPersonaje, unaDistancia) {
+            return  0.5 * unaDistancia * self. velocidad() < energiaAportada(unPersonaje)
+        }
+    }
 
-//     object telefono {
-//         var llamadas = [
-//                         llamadaCasaMama, 
-//                         llamadaPuestoRemoto, 
-//                         ...
-//                         ]   
-//         // ¡Cuidado que ahora el objeto cambia!
-//         var visor = ''
-//         var tiempoACelulares = 0
-//         var tiempoAFijos = 0
-        
-//         method agregarLlamada(_llamada) {
-//             llamadas.add(_llamada)
-//         }
+    object tweety() {
+        var pesoActual = 0
+        method peso(_gramos) {pesoActual = _gramos}
+        method pesoActual() {return pesoActual}
+        method energiaAportada() {return 12 + 1 * self.pesoActual()}
+    }
 
-//         method llamar(_tiempo) {
-//             if (self.esNumeroValido())
-//                 // self.agregarLlamada() -- aca me falta algo como un contructor de un objeto usando el parametro _tiempo ...
-//                 visor = ''
-//         }
-
-//         method tiempoTotalCelulares() {
-//             return 
-//             llamadas.filter({llamada => (llamada.numero).esNumeroCelular()}).sum(i => i.duracion())
-//         }
-
-//         method tiempoTotalFijos() {
-//             return 
-//             llamadas.filter({llamada => (llamada.numero()).esNumeroFijo()}).sum(i => i.duracion())
-//         }
-
-//         // method cantLlamadasFijos() = llamadas.filter(call => call.esNumeroFijo()).size()
-//         // method cantLlamadasCelular() = llamadas.filter(call => call.esNumeroCelular()).size()
-
-//         method agregarDigito(digito) {visor = visor + digito}
-//         method esNumeroValido() {return (size(visor) == 5 || size(visor) == 7 && visor.startsWith('15'))}
-//         method borrarUltimoDigito {
-//             if (visor == '') {visor = ''}
-//             else {visor = visor.substring(0, size(numeroActual))}
-//         }
-//         method numeroIngresado() {return visor}
-//         method esNumeroCelular() {return self.numeroIngresado().startsWith('15') && size(self.numeroIngresado()) == 7} 
-//         method esNumeroFijo() {return size(self.numeroIngresado()) == 5} 
-//         }
-
-//     object llamadaCasaMama() {
-//         method duracion = {200}
-//         method numero = {'44445'}
-//     }
-
-//     object llamadaPuestoRemoto() {
-//         method duracion = {5}
-//         method numero = {'1544779'}
-//     }
-
-//     // Parte 3: Políticas de facturación por compañía
-    
-//     objeto rrhh() {
-//         method precioCelular() {return 0.7}
-//         method precioFijo() {return 0.45}
-//         method bonificacion() {return 1000 * self.precioFijo()}
-//     }
-//     objeto estrellaFugaz() {
-//         method precioCelular() {return 0.6}
-//         method precioFijo() {return 0.5}
-//         method bonificacion() {
-//             beneficio = 0
-
-//         }
-//     }
-
-//     // ... un poco lo dejo ... tengo bastantes dudas ...
-
-// // Ej#09 - Silvestre, Tweety y Speedy González
-
-//     object silvestre() {
-//         var energia = 0
-//         method velocidad() {return 5 + energía / 10}
-//         method correr(_distancia) {energia -= 0.5 * _distancia * velocidad}
-//         method comer(animal) {energia += animal.energiaAportada()}
-//         method convieneComer(unPersonaje, unaDistancia) {
-//             return  0.5 * unaDistancia * self. velocidad() < energiaAportada(unPersonaje)
-//         }
-//     }
-
-//     object tweety() {
-//         var pesoActual = 0
-//         method peso(_gramos) {pesoActual = _gramos}
-//         method pesoActual() {return pesoActual}
-//         method energiaAportada() {return 12 + 1 * self.pesoActual()}
-//     }
-
-//     object speedyGonzalez() {
-//         method energiaAportada() {return 100000}
-//     }
-
-
+    object speedyGonzalez() {
+        method energiaAportada() {return 100000}
+    }
 
 // // Ej#10 - Cuentas Bancarias
 

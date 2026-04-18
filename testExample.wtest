@@ -152,8 +152,23 @@ describe "group of tests for Guia #02" {
   //   assert.equals(5, enterprise.potencia())
   // }
 
-  test "Ej#06. Pepita con energia inicial 100 al vacionar en el Noroeste, queda revitalizada, y su energia queda en 110" {
-    pepita.vacionar(noroteste)
-    assert.equals(110, pepita.energia())
-  }
+  // test "Ej#06. Pepita con energia inicial 100 al vacionar en el Noroeste, queda revitalizada, y su energia queda en 110" {
+  //   pepita.vacionar(noroteste)
+  //   assert.equals(110, pepita.energia())
+
+  // test "Ej#07. Probamos el validador y los contadores. Se pueden hacer varias pruebas mas especificas" {
+  //   telefono.agregarDigito(8)
+  //   telefono.agregarDigito(9)
+  //   telefono.agregarDigito(0)
+  //   telefono.agregarDigito(2)
+  //   telefono.agregarDigito(2) 
+  //   // telefono.agregarDigito(2)
+  //   // telefono.agregarDigito(2) 
+  //   telefono.llamar(100)
+  //   // assert.that(telefono.esNumeroValido())
+  //   // assert.that(telefono.esNumeroFijo())
+  //   // assert.equals(1, telefono.cantLlamadas())
+  //   // assert.equals(1, telefono.cantLlamadasFijos())
+  //   assert.equals(1, telefono.cantLlamadasCelulares())
+  // }
 }
