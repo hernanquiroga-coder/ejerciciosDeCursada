@@ -157,18 +157,26 @@ describe "group of tests for Guia #02" {
   //   assert.equals(110, pepita.energia())
 
   // test "Ej#07. Probamos el validador y los contadores. Se pueden hacer varias pruebas mas especificas" {
-    //   telefono.agregarDigito(8)
-      //   telefono.agregarDigito(9)
-        //   telefono.agregarDigito(0)
-          //   telefono.agregarDigito(2)
-            //   telefono.agregarDigito(2) 
-              //   // telefono.agregarDigito(2)
-                //   // telefono.agregarDigito(2) 
-                  //   telefono.llamar(100)
-                    //   // assert.that(telefono.esNumeroValido())
-                      //   // assert.that(telefono.esNumeroFijo())
-                        //   // assert.equals(1, telefono.cantLlamadas())
-                          //   // assert.equals(1, telefono.cantLlamadasFijos())
-                            //   assert.equals(1, telefono.cantLlamadasCelulares())
-                              // }
+  //   telefono.agregarDigito(8)
+  //   telefono.agregarDigito(9)
+  //   telefono.agregarDigito(0)
+  //   telefono.agregarDigito(2)
+  //   telefono.agregarDigito(2) 
+  //   telefono.agregarDigito(2)
+  //   telefono.agregarDigito(2) 
+  //   telefono.llamar(100)
+  //   assert.that(telefono.esNumeroValido())
+  //   // assert.that(telefono.esNumeroFijo())
+  //   // assert.equals(1, telefono.cantLlamadas())
+  //   // assert.equals(1, telefono.cantLlamadasFijos())
+  //   // assert.equals(1, telefono.cantLlamadasCelulares())
+  //   }
+
+    test 'Ej#11. Cambiando el sueldo de Pepe conforme su categoria. 
+            Pepe gerente cobra 19400, con sindicato porcentual
+            Pepe gerente cobra ***, con sindicato ***' {
+      
+      assert.equals(19400, pepe.sueldo())
+      // Funciona esto ... ¿?
+    }
 }

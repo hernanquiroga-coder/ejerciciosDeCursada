@@ -420,145 +420,137 @@
     //     method energiaAportada() = 100000
     // }
 
-// // Ej#10 - Cuentas Bancarias
+// Ej#10 - Cuentas Bancarias
 
-    object cuentaPepe {
-        var    saldo = 0
-        method saldo() = saldo
-        method depositar(_cantPesos) {saldo += _cantPesos}
-        method extraer(_cantPesos) {saldo -= _cantPesos.max(0)}
-        method tieneSaldo() = saldo > 0
-    }
-    object cuentaJulian {
-        var    saldo = 0
-        method tieneSaldo() = saldo > 0
-        method saldo() = saldo
-        method depositar(_cantPesos) {saldo += _cantPesos * 0.8}
-        method extraer(_cantPesos) {
-            if (self.tieneSaldo()) {
-                saldo -= _cantPesos
-                saldo = saldo - 5.min(saldo)
-            }
-        }
-    }
-    object cuentaPapa {
-        var saldoDolares = 0
-        // const saldo = saldoDolares * self.precioDeCompra()
+    // object cuentaPepe {
+    //     var    saldo = 0
+    //     method saldo() = saldo
+    //     method depositar(_cantPesos) {saldo += _cantPesos}
+    //     method extraer(_cantPesos) {saldo -= _cantPesos.max(0)}
+    //     method tieneSaldo() = saldo > 0
+    // }
+    // object cuentaJulian {
+    //     var    saldo = 0
+    //     method tieneSaldo() = saldo > 0
+    //     method saldo() = saldo
+    //     method depositar(_cantPesos) {saldo += _cantPesos * 0.8}
+    //     method extraer(_cantPesos) {
+    //         if (self.tieneSaldo()) {
+    //             saldo -= _cantPesos
+    //             saldo = saldo - 5.min(saldo)
+    //         }
+    //     }
+    // }
+    // object cuentaPapa {
+    //     var saldoDolares = 0
+    //     // const saldo = saldoDolares * self.precioDeCompra()
 
-        var precioDeVenta = 15.10
-        var precioDeCompra = 14.70
+    //     var precioDeVenta = 15.10
+    //     var precioDeCompra = 14.70
 
-        method nuevoPrecioDeVenta(_nuevoPrecio) {precioDeVenta = _nuevoPrecio}
-        method nuevoPrecioDeCompra(_nuevoPrecio) {precioDeCompra = _nuevoPrecio}
+    //     method nuevoPrecioDeVenta(_nuevoPrecio) {precioDeVenta = _nuevoPrecio}
+    //     method nuevoPrecioDeCompra(_nuevoPrecio) {precioDeCompra = _nuevoPrecio}
         
-        method precioDeVenta() = precioDeVenta
-        method precioDeCompra() = precioDeCompra
+    //     method precioDeVenta() = precioDeVenta
+    //     method precioDeCompra() = precioDeCompra
 
-        method tieneSaldo() = self.saldo() > 0
-        method saldo() = saldoDolares * self.precioDeCompra()
-        method depositar(_cantPesos) {saldoDolares += _cantPesos / precioDeVenta}
-        method extraer(_cantPesos) {
-            if (self.tieneSaldo())
-             saldoDolares -= _cantPesos / precioDeCompra
-        }
-    }
+    //     method tieneSaldo() = self.saldo() > 0
+    //     method saldo() = saldoDolares * self.precioDeCompra()
+    //     method depositar(_cantPesos) {saldoDolares += _cantPesos / precioDeVenta}
+    //     method extraer(_cantPesos) {
+    //         if (self.tieneSaldo())
+    //          saldoDolares -= _cantPesos / precioDeCompra
+    //     }
+    // }
 
-    object casaHermanos {
-        const sumaDeTotasLasCompras   = 1000
-        var cuentaPrincipal         = cuentaPepe
-        method nuevaCuentaPrincipal(_unaCuenta) {
-          cuentaPrincipal = _unaCuenta
-        }
-        method esDerrochona()   = sumaDeTotasLasCompras > 5000
-        method esBacana()       = cuentaPrincipal.saldo() > 40000
-    }
+    // object casaHermanos {
+    //     const sumaDeTotasLasCompras   = 1000
+    //     var cuentaPrincipal         = cuentaPepe
+    //     method nuevaCuentaPrincipal(_unaCuenta) {
+    //       cuentaPrincipal = _unaCuenta
+    //     }
+    //     method esDerrochona()   = sumaDeTotasLasCompras > 5000
+    //     method esBacana()       = cuentaPrincipal.saldo() > 40000
+    // }
 
-    object combinada {
-        var cuentaPrimaria = cuentaPepe
-        var cuentaSecundaria = cuentaJulian
+    // object combinada {
+    //     var cuentaPrimaria = cuentaPepe
+    //     var cuentaSecundaria = cuentaJulian
 
-        var residual = 0
+    //     var residual = 0
 
-        method saldo() = cuentaPrimaria.saldo() + cuentaSecundaria.saldo()
+    //     method saldo() = cuentaPrimaria.saldo() + cuentaSecundaria.saldo()
 
-        method nuevaCuentaPrimaria(_nuevaCuentaPrimaria)    {cuentaPrimaria = _nuevaCuentaPrimaria}
-        method nuevaCuentaSecundaria(_nuevaCuentaSecundaria)  {cuentaSecundaria = _nuevaCuentaSecundaria}
+    //     method nuevaCuentaPrimaria(_nuevaCuentaPrimaria)    {cuentaPrimaria = _nuevaCuentaPrimaria}
+    //     method nuevaCuentaSecundaria(_nuevaCuentaSecundaria)  {cuentaSecundaria = _nuevaCuentaSecundaria}
 
-        method depositar(_cantPesos) {
-            if (cuentaSecundaria.saldo() < 1000) {cuentaSecundaria.depositar(_cantPesos)}
-            else {cuentaPrimaria.depositar(_cantPesos)}
-        }
-        method extraer(_cantPesos) {
-            if (self.saldo() > _cantPesos)
-                residual = (_cantPesos - cuentaPrimaria.saldo()).max(0)
-                cuentaPrimaria.extraer(_cantPesos)
-                cuentaSecundaria.extraer(residual)
-        }
-    }
+    //     method depositar(_cantPesos) {
+    //         if (cuentaSecundaria.saldo() < 1000) {cuentaSecundaria.depositar(_cantPesos)}
+    //         else {cuentaPrimaria.depositar(_cantPesos)}
+    //     }
+    //     method extraer(_cantPesos) {
+    //         if (self.saldo() > _cantPesos)
+    //             residual = (_cantPesos - cuentaPrimaria.saldo()).max(0)
+    //             cuentaPrimaria.extraer(_cantPesos)
+    //             cuentaSecundaria.extraer(residual)
+    //     }
+    // }
 
-// // Ej#11 - El sueldo de Pepe
+// Ej#11 - El sueldo de Pepe
     
-//     Parte 1: Sueldo
-//     Parte 2: Situación sindical
-//     Parte 3: Bono por presentismo
+    // Parte 1: Sueldo
+    // Parte 2: Situación sindical
+    // Parte 3: Bono por presentismo
 
-//     method pepe {
-//         var esGerente = true
-//         var neto = 0
-//         var diasFalta = 0
-//         method esGerente() {return esGerente}
-//         method hayPresentismo() {return diasFalta = 0}
-//         method cantFaltas() {return diasFalta}
-//         method neto() {
-//             if (self.esGerente()) {return 15000}
-//             else {return 20000}
-//         }
-//         method sueldo(_sindicato, _bono) {
-//             enMano = self.neto() - _sindicato.honorario(neto)
-//             enMano += _bono.bonfificacion(self)
-//         }
-//     }
+    object pepe {
+        var esGerente = false
+        var faltas = 0
+        var sindicato = porcentual
 
-//     object porcentual {
-//         method honorario(_sueldoBase) {
-//             return 0.03 + _sueldoBase
-//         }
-//     }
+        method sindicato(_nuevoSindicato) {sindicato = _nuevoSindicato}
+        method esGerente() = esGerente
+        method hayPresentismo() = faltas == 0
+        method cantFaltas() = faltas
+        method faltarUnDia() {faltas += 1}
+        method neto() = if (self.esGerente()) 15000 else 20000
+        // method sueldo() = self.neto()        
+        method sueldo() = self.neto() - sindicato.honorario(self.neto())
+        method sueldo(_sindicato, _bono) =
+            self.neto() - _sindicato.honorario(self.neto()) +_bono.bonificacion(self)
+        method promover() {esGerente = true}
+    }
 
-//     object comprometido {
-//         method honorario(_sueldoBase) {
-//             return 0.01 + _sueldoBase + 1500
-//         }
-//     }
+    object porcentual {
+        method honorario(_neto) =  0.03 * _neto
+    }
 
-//     object noSindicalizado {
-//         method honorario(_sueldoBase) {
-//             return 0
-//         }
-//     }
+    object comprometido {
+        method honorario(_neto) = 0.01 + _neto + 1500
+    }
 
-//     object bonoNormal {
-//         method bonificacion(_empleado) {
-//             if (_empleado.cantFaltas() == 0) {return  2000}
-//             if (_empleado.cantFaltas() == 1) {return  1000}
-//             else {return 0}
+    object noSindicalizado {
+        method honorario(_neto) = 0
+    }
+
+    object bonoNormal {
+        method bonificacion(_empleado) {
+            if (_empleado.cantFaltas() == 0) {return  2000}
+            else if (_empleado.cantFaltas() == 1) {return  1000}
+            else {return 0}
                 
-//         }
-//     }
+        }
+    }
 
-//     object bonoEpocaAjuste {
-//         method bonificacion(_empleado) {
-//             if (_empleado.cantFaltas() == 0) {return  10}
-//             else {return 0}
-//         }
-//     }
+    object bonoEpocaAjuste {
+        method bonificacion(_empleado) {
+            if (_empleado.cantFaltas() == 0) {return  10}
+            else {return 0}
+        }
+    }
 
-//     object demagogico {
-//         method bonificacion(_empleado) {
-//             if (_empleado.neto() < 18000) {500}
-//             if (_empleado.neto() >= 18000) {350}
-//         }
-//     }
+    object demagogico {
+        method bonificacion(_empleado) = if (_empleado.neto() < 18000) 500 else 350
+    }
 
 // // Ej#12 - Mensajeros de pelicula
 
