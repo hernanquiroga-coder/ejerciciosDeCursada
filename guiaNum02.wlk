@@ -397,70 +397,104 @@
 
 // Ej#09 - Silvestre, Tweety y Speedy González
 
-    object silvestre() {
-        var energia = 0
-        method velocidad() {return 5 + energía / 10}
-        method correr(_distancia) {energia -= 0.5 * _distancia * velocidad}
-        method comer(animal) {energia += animal.energiaAportada()}
-        method convieneComer(unPersonaje, unaDistancia) {
-            return  0.5 * unaDistancia * self. velocidad() < energiaAportada(unPersonaje)
-        }
-    }
+    // object silvestre {
+    //     var energia = 100
+    //     method velocidad() =  5 + energia / 10
+    //     method correr(_distancia) {energia -= self.energiaGastadaAlCorrer(_distancia)}
+    //     method comer(_animal) {energia += self.energiaAportadaAlComer(_animal)}
+    //     method energiaAportadaAlComer(_animal) = 12 + _animal.energiaAPortada()
+    //     method energiaGastadaAlCorrer(_distancia) = 0.5 * _distancia * self.velocidad()
+    //     method convieneComer(_unAnimal, _unaDistancia) =
+    //         self.energiaAportadaAlComer(_unAnimal) > 
+    //         self.energiaGastadaAlCorrer(_unaDistancia)
+    // }
+    // object tweety {
+    //     var peso = 0
+    //     method aumentarPeso(_aumento) {peso += _aumento}
+    //     method peso(_nuevoPeso) {peso = _nuevoPeso}
+    //     method peso() = peso
+    //     method energiaAportada() =  12 + 1 * self.peso()
+    // }
 
-    object tweety() {
-        var pesoActual = 0
-        method peso(_gramos) {pesoActual = _gramos}
-        method pesoActual() {return pesoActual}
-        method energiaAportada() {return 12 + 1 * self.pesoActual()}
-    }
-
-    object speedyGonzalez() {
-        method energiaAportada() {return 100000}
-    }
+    // object speedyGonzalez {
+    //     method energiaAportada() = 100000
+    // }
 
 // // Ej#10 - Cuentas Bancarias
 
-//     object pepe {
-//         var saldo = 0
-//         method saldo() {return saldo}
-//         method depositar(unaCantidadPesos) {saldo += unaCantidadPesos}
-//         method extraer(unaCantidadPesos) {saldo -= unaCantidadPesos}
-//     }
-//     object julian {
-//         var saldo = 0
-//         method saldo() {return saldo}
-//         method depositar(unaCantidadPesos) {saldo += unaCantidadPesos * 0.8}
-//         method extraer(unaCantidadPesos) {
-//             saldo -= unaCantidadPesos
-//             saldo = saldo - 5.min(saldo)
-//         }
-//     }
-//     object papa {
-//         saldoDolares = 0
-//         method saldo() {return saldoDolares * 14.70}
-//         method depositar(unaCantidadDePesos) {saldoDolares += unaCantidadDePesos / 15.10}
-//         method extraer(unaCantidadDePesos) {saldoDolares -= unaCantidadDePesos / 14.70}
-//     }
+    object cuentaPepe {
+        var    saldo = 0
+        method saldo() = saldo
+        method depositar(_cantPesos) {saldo += _cantPesos}
+        method extraer(_cantPesos) {saldo -= _cantPesos.max(0)}
+        method tieneSaldo() = saldo > 0
+    }
+    object cuentaJulian {
+        var    saldo = 0
+        method tieneSaldo() = saldo > 0
+        method saldo() = saldo
+        method depositar(_cantPesos) {saldo += _cantPesos * 0.8}
+        method extraer(_cantPesos) {
+            if (self.tieneSaldo()) {
+                saldo -= _cantPesos
+                saldo = saldo - 5.min(saldo)
+            }
+        }
+    }
+    object cuentaPapa {
+        var saldoDolares = 0
+        // const saldo = saldoDolares * self.precioDeCompra()
 
-//     object casaHermanos {
-//         var compras = []
-//         method esDerrochona() {return compras.sum({compra => compra}) > 5000}
-//         method esBacana() {return pepe.saldo() + julian.saldo() > 40000}
-//     }
+        var precioDeVenta = 15.10
+        var precioDeCompra = 14.70
 
-//     object combinada {
-//         var cuentaPrimaria
-//         var cuentaSecundaria
-//         method saldo() {return cuentaPrimaria.saldo() + cuentaSecundaria.saldo()}
-//         method depositar(unaCantidadDePesos) {
-//             if (cuentaSecundaria.saldo() < 1000) {cuentaSecundaria.depositar(unaCantidadDePesos)}
-//             else {cuentaPrimaria.depositar(unaCantidadDePesos)}
-//         }
-//         method extraer(unaCantidadDePesos) {
-//             cuentaPrimaria.extraer(unaCantidadDePesos.max(cuentaPrimaria.saldo()))
-//             cuentaSecundaria.extraer(...)       // seguir completando ... pero va queriendo
-//         }
-//     }
+        method nuevoPrecioDeVenta(_nuevoPrecio) {precioDeVenta = _nuevoPrecio}
+        method nuevoPrecioDeCompra(_nuevoPrecio) {precioDeCompra = _nuevoPrecio}
+        
+        method precioDeVenta() = precioDeVenta
+        method precioDeCompra() = precioDeCompra
+
+        method tieneSaldo() = self.saldo() > 0
+        method saldo() = saldoDolares * self.precioDeCompra()
+        method depositar(_cantPesos) {saldoDolares += _cantPesos / precioDeVenta}
+        method extraer(_cantPesos) {
+            if (self.tieneSaldo())
+             saldoDolares -= _cantPesos / precioDeCompra
+        }
+    }
+
+    object casaHermanos {
+        const sumaDeTotasLasCompras   = 1000
+        var cuentaPrincipal         = cuentaPepe
+        method nuevaCuentaPrincipal(_unaCuenta) {
+          cuentaPrincipal = _unaCuenta
+        }
+        method esDerrochona()   = sumaDeTotasLasCompras > 5000
+        method esBacana()       = cuentaPrincipal.saldo() > 40000
+    }
+
+    object combinada {
+        var cuentaPrimaria = cuentaPepe
+        var cuentaSecundaria = cuentaJulian
+
+        var residual = 0
+
+        method saldo() = cuentaPrimaria.saldo() + cuentaSecundaria.saldo()
+
+        method nuevaCuentaPrimaria(_nuevaCuentaPrimaria)    {cuentaPrimaria = _nuevaCuentaPrimaria}
+        method nuevaCuentaSecundaria(_nuevaCuentaSecundaria)  {cuentaSecundaria = _nuevaCuentaSecundaria}
+
+        method depositar(_cantPesos) {
+            if (cuentaSecundaria.saldo() < 1000) {cuentaSecundaria.depositar(_cantPesos)}
+            else {cuentaPrimaria.depositar(_cantPesos)}
+        }
+        method extraer(_cantPesos) {
+            if (self.saldo() > _cantPesos)
+                residual = (_cantPesos - cuentaPrimaria.saldo()).max(0)
+                cuentaPrimaria.extraer(_cantPesos)
+                cuentaSecundaria.extraer(residual)
+        }
+    }
 
 // // Ej#11 - El sueldo de Pepe
     

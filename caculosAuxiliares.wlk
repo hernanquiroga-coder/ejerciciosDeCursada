@@ -1,4 +1,3 @@
-import guiaNum01.*
 // Programación con Objetos 1
 // Codigo auxiliar
 

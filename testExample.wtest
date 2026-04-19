@@ -157,18 +157,18 @@ describe "group of tests for Guia #02" {
   //   assert.equals(110, pepita.energia())
 
   // test "Ej#07. Probamos el validador y los contadores. Se pueden hacer varias pruebas mas especificas" {
-  //   telefono.agregarDigito(8)
-  //   telefono.agregarDigito(9)
-  //   telefono.agregarDigito(0)
-  //   telefono.agregarDigito(2)
-  //   telefono.agregarDigito(2) 
-  //   // telefono.agregarDigito(2)
-  //   // telefono.agregarDigito(2) 
-  //   telefono.llamar(100)
-  //   // assert.that(telefono.esNumeroValido())
-  //   // assert.that(telefono.esNumeroFijo())
-  //   // assert.equals(1, telefono.cantLlamadas())
-  //   // assert.equals(1, telefono.cantLlamadasFijos())
-  //   assert.equals(1, telefono.cantLlamadasCelulares())
-  // }
+    //   telefono.agregarDigito(8)
+      //   telefono.agregarDigito(9)
+        //   telefono.agregarDigito(0)
+          //   telefono.agregarDigito(2)
+            //   telefono.agregarDigito(2) 
+              //   // telefono.agregarDigito(2)
+                //   // telefono.agregarDigito(2) 
+                  //   telefono.llamar(100)
+                    //   // assert.that(telefono.esNumeroValido())
+                      //   // assert.that(telefono.esNumeroFijo())
+                        //   // assert.equals(1, telefono.cantLlamadas())
+                          //   // assert.equals(1, telefono.cantLlamadasFijos())
+                            //   assert.equals(1, telefono.cantLlamadasCelulares())
+                              // }
 }
