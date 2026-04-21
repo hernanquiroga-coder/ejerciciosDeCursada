@@ -172,11 +172,22 @@ describe "group of tests for Guia #02" {
   //   // assert.equals(1, telefono.cantLlamadasCelulares())
   //   }
 
-    test 'Ej#11. Cambiando el sueldo de Pepe conforme su categoria. 
-            Pepe gerente cobra 19400, con sindicato porcentual
-            Pepe gerente cobra ***, con sindicato ***' {
+    // test 'Ej#11. Cambiando el sueldo de Pepe conforme su categoria. 
+    //         Pepe gerente cobra 19400, con sindicato porcentual
+    //         Pepe gerente cobra ***, con sindicato ***' {
       
-      assert.equals(19400, pepe.sueldo())
-      // Funciona esto ... ¿?
+    //   assert.equals(19400, pepe.sueldo())
+    //   // Funciona esto ... ¿?
+    // }
+
+    test "Ej#12. El paquete de George no esta pago, no puede ser llevado por Neo a La Matrix" {
+      
+      assert.notThat(paquete.puedeEntregar(neo, matrix))
+    }
+
+    test "Ej#12. El paquete de George esta pago, puede ser llevado por Neo a La Matrix porque le cargamos credito" {
+      paquete.pagar()
+      neo.darleCredito()
+      assert.that(paquete.puedeEntregar(neo, matrix))
     }
 }

@@ -502,108 +502,113 @@
     // Parte 2: Situación sindical
     // Parte 3: Bono por presentismo
 
-    object pepe {
-        var esGerente = false
-        var faltas = 0
-        var sindicato = porcentual
+    // object pepe {
+    //     var esGerente = false
+    //     var faltas = 0
+    //     var sindicato = porcentual
 
-        method sindicato(_nuevoSindicato) {sindicato = _nuevoSindicato}
-        method esGerente() = esGerente
-        method hayPresentismo() = faltas == 0
-        method cantFaltas() = faltas
-        method faltarUnDia() {faltas += 1}
-        method neto() = if (self.esGerente()) 15000 else 20000
-        // method sueldo() = self.neto()        
-        method sueldo() = self.neto() - sindicato.honorario(self.neto())
-        method sueldo(_sindicato, _bono) =
-            self.neto() - _sindicato.honorario(self.neto()) +_bono.bonificacion(self)
-        method promover() {esGerente = true}
-    }
+    //     method sindicato(_nuevoSindicato) {sindicato = _nuevoSindicato}
+    //     method esGerente() = esGerente
+    //     method hayPresentismo() = faltas == 0
+    //     method cantFaltas() = faltas
+    //     method faltarUnDia() {faltas += 1}
+    //     method neto() = if (self.esGerente()) 15000 else 20000
+    //     // method sueldo() = self.neto()        
+    //     method sueldo() = self.neto() - sindicato.honorario(self.neto())
+    //     method sueldo(_sindicato, _bono) =
+    //         self.neto() - _sindicato.honorario(self.neto()) +_bono.bonificacion(self)
+    //     method promover() {esGerente = true}
+    // }
 
-    object porcentual {
-        method honorario(_neto) =  0.03 * _neto
-    }
+    // object porcentual {
+    //     method honorario(_neto) =  0.03 * _neto
+    // }
 
-    object comprometido {
-        method honorario(_neto) = 0.01 + _neto + 1500
-    }
+    // object comprometido {
+    //     method honorario(_neto) = 0.01 + _neto + 1500
+    // }
 
-    object noSindicalizado {
-        method honorario(_neto) = 0
-    }
+    // object noSindicalizado {
+    //     method honorario(_neto) = 0
+    // }
 
-    object bonoNormal {
-        method bonificacion(_empleado) {
-            if (_empleado.cantFaltas() == 0) {return  2000}
-            else if (_empleado.cantFaltas() == 1) {return  1000}
-            else {return 0}
+    // object bonoNormal {
+    //     method bonificacion(_empleado) {
+    //         if (_empleado.cantFaltas() == 0) {return  2000}
+    //         else if (_empleado.cantFaltas() == 1) {return  1000}
+    //         else {return 0}
                 
-        }
-    }
+    //     }
+    // }
 
-    object bonoEpocaAjuste {
-        method bonificacion(_empleado) {
-            if (_empleado.cantFaltas() == 0) {return  10}
-            else {return 0}
-        }
-    }
+    // object bonoEpocaAjuste {
+    //     method bonificacion(_empleado) {
+    //         if (_empleado.cantFaltas() == 0) {return  10}
+    //         else {return 0}
+    //     }
+    // }
 
-    object demagogico {
-        method bonificacion(_empleado) = if (_empleado.neto() < 18000) 500 else 350
-    }
+    // object demagogico {
+    //     method bonificacion(_empleado) = if (_empleado.neto() < 18000) 500 else 350
+    // }
 
 // // Ej#12 - Mensajeros de pelicula
 
-//     object paquete {
-//         var pago = 0
-//         method puedeEntregar(_mensajero, _destino)
-//     }
+    // EL PAQUETE
 
-//     object brooklyn {
-//         method puedeVenir(_mensajero) {return _mensajero.peso() < 1000}
-//     }
+    object paquete {
+        var estaPago = false
+        method puedeEntregar(_mensajero, _destino) = 
+            _destino.puedePasar(_mensajero) && estaPago
+        method pagar() {
+          estaPago = true
+        }
+    }
 
-//     object matrix {
-//         method puedeVenir(_mensajero) {return _mensajero.puedeLlamar()}
-//     }
+    // LOS DESTINOS
 
-//     object chukNorris {
-//         method puedeLlamar() {return true}
-//         method peso() {return 900}
-//     }
+    object brooklyn {
+        method puedePasar(_mensajero) = _mensajero.pesoTotal() < 1000
+    }
 
-//     object neo {
-//         var dinero()
-//         method puedeLlamar() {return false}
-//         method peso() {return 0}
+    object matrix {
+        method puedePasar(_mensajero) = _mensajero.puedeLlamar()
+    }
 
-//     }
+    // LOS MENSAJEROS
 
-//     object lincolnHawk {
-//         var vehiculo
-//         var pesoPropio 
-//         method vehiculo(_vehiculo) {vehiculo = _vehiculo}
-//         method pesoPropio(_pesoMensajero) {pesoPropio = _pesoMensajero}
-//         method puedeLlamar() {return false}
-//         method peso() {return pesoPropio + vehiculo.peso()}
+    object chukNorris {
+        method puedeLlamar() = true
+        method pesoTotal() = 900
+    }
 
-//     }
+    object neo {
+        var tieneCredito = false 
+        method puedeLlamar() = tieneCredito
+        method pesoTotal() = 0
+        method darleCredito() {tieneCredito = true}
 
-//     object bicicleta {
-//         method peso() {return 10}
-//     }
+    }
 
-//     object camion {
-//         var acoplados = 0
-//         var pesoPropio = 500
-//         method peso() {return pesoPropio + 500 * acoplados}
+    object lincolnHawk {
+        var vehiculo = bicicleta
+        var pesoPropio = 100
+        method asignarVehiculo(_nuevoVehiculo) {vehiculo = _nuevoVehiculo}
+        method pesoPropio(_nuevoPeso) {pesoPropio = _nuevoPeso}
+        method puedeLlamar() = false
+        method pesoTotal() = pesoPropio + vehiculo.peso()
 
-//     }
+    }
+    // LOS VEHICULOS DE L. H.
+    object bicicleta {
+        method peso()  = 10
+    }
 
-//     // Aclaración: Para el cálculo del peso, el peso del paquete es despreciable.
-//     // Algunos casos de prueba:
-//     // El paquete de George que no está pago no puede ser llevado por Neo a la matrix.
-//     // El paquete de George que sí está pago puede ser llevado por Chuck a la matrix
-//     // El paquete de George que sí está pago no puede ser llevado por Lincoln Hawk
-//     // (80kg) a Brooklyn si es que utiliza un camión con un acoplado .
-//     // La entrega anterior puede hacerse si Lincoln Hawk usa una bicicleta
+    object camion {
+        var acoplados = 0
+        var pesoCabina = 500
+        method nuevoPesoDeCabina(_nuevoPeso) {pesoCabina = _nuevoPeso}
+        method peso() = pesoCabina + 500 * acoplados
+        method agregarAcoplado() {acoplados += 1}
+
+    }
