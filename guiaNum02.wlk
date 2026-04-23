@@ -600,6 +600,7 @@
 
     }
     // LOS VEHICULOS DE L. H.
+    
     object bicicleta {
         method peso()  = 10
     }
