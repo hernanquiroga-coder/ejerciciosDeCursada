@@ -106,485 +106,291 @@
     
 // Ej#02 - Cuentas bancarias (continuación)
 
-    object cuentaPepe {
-        var    saldo = 1000
-        method saldo() = saldo
-        method depositar(_cantPesos) {saldo += _cantPesos}
-        method extraer(_cantPesos) {saldo -= _cantPesos.max(0)}
-        method tieneSaldo() = saldo > 0
+    // object cuentaPepe {
+    //     var    saldo = 1000
+    //     method saldo() = saldo
+    //     method depositar(_cantPesos) {saldo += _cantPesos}
+    //     method extraer(_cantPesos) {saldo -= _cantPesos.max(0)}
+    //     method tieneSaldo() = saldo > 0
+    // }
+    // object cuentaJulian {
+    //     var    saldo = 2000
+    //     method tieneSaldo() = saldo > 0
+    //     method saldo() = saldo
+    //     method depositar(_cantPesos) {saldo += _cantPesos * 0.8}
+    //     method extraer(_cantPesos) {
+    //         if (self.tieneSaldo()) {
+    //             saldo -= _cantPesos
+    //             saldo = saldo - 5.min(saldo)
+    //         }
+    //     }
+    // }
+    // object cuentaPapa {
+    //     var saldoDolares = 700
+    //     // const saldo = saldoDolares * self.precioDeCompra()
+
+    //     var precioDeVenta = 15.10
+    //     var precioDeCompra = 14.70
+
+    //     method nuevoPrecioDeVenta(_nuevoPrecio) {precioDeVenta = _nuevoPrecio}
+    //     method nuevoPrecioDeCompra(_nuevoPrecio) {precioDeCompra = _nuevoPrecio}
+        
+    //     method precioDeVenta() = precioDeVenta
+    //     method precioDeCompra() = precioDeCompra
+
+    //     method tieneSaldo() = self.saldo() > 0
+    //     method saldo() = saldoDolares * self.precioDeCompra()
+    //     method depositar(_cantPesos) {saldoDolares += _cantPesos / precioDeVenta}
+    //     method extraer(_cantPesos) {
+    //         if (self.tieneSaldo())
+    //          saldoDolares -= _cantPesos / precioDeCompra
+    //     }
+    // }
+    // object casaHermanos {
+    //     const sumaDeTotasLasCompras   = 1000
+    //     var cuentaPrincipal         = cuentaPepe
+    //     var ultimaCosaQueSeCompro   = heladera
+    //     method nuevaCuentaPrincipal(_unaCuenta) {cuentaPrincipal = _unaCuenta}
+    //     method esDerrochona()   = sumaDeTotasLasCompras > 5000
+    //     method esBacana()       = cuentaPrincipal.saldo() > 40000
+    //     method gastar(_importeEnPeso) {cuentaPrincipal.extraer(_importeEnPeso)}
+    //     method comprar(_unaCosa) {
+    //         self.gastar(_unaCosa.precio())
+    //         ultimaCosaQueSeCompro = _unaCosa
+    //         }
+    //     method tieneComida() {
+    //         // ... aca viene algo con listas / conjuntos
+    //     }
+    //     method puedeComprar(_unaCosa) = cuentaPrincipal.saldo() > _unaCosa.precio()
+    //     method cuentaParaGastos() = cuentaPrincipal
+    //     method vieneDeEquiparse() = 
+    //         ultimaCosaQueSeCompro.esElectro() || ultimaCosaQueSeCompro.precio() < 5000    
+    // }
+    // object combinada {
+    //     var cuentaPrimaria = cuentaPepe
+    //     var cuentaSecundaria = cuentaJulian
+
+    //     var residual = 0
+
+    //     method saldo() = cuentaPrimaria.saldo() + cuentaSecundaria.saldo()
+
+    //     method nuevaCuentaPrimaria(_nuevaCuentaPrimaria)    {cuentaPrimaria = _nuevaCuentaPrimaria}
+    //     method nuevaCuentaSecundaria(_nuevaCuentaSecundaria)  {cuentaSecundaria = _nuevaCuentaSecundaria}
+
+    //     method depositar(_cantPesos) {
+    //         if (cuentaSecundaria.saldo() < 1000) {cuentaSecundaria.depositar(_cantPesos)}
+    //         else {cuentaPrimaria.depositar(_cantPesos)}
+    //     }
+    //     method extraer(_cantPesos) {
+    //         if (self.saldo() > _cantPesos)
+    //             residual = (_cantPesos - cuentaPrimaria.saldo()).max(0)
+    //             cuentaPrimaria.extraer(_cantPesos)
+    //             cuentaSecundaria.extraer(residual)
+    //     }
+    // }
+
+    // object heladera {
+    //     method precio()         = 20000
+    //     method esComida()       = false
+    //     method esElectro()      = true
+    // }
+    // object cama {
+    //     method precio()         = 8000
+    //     method esComida()       = false
+    //     method esElectro()      = false
+    // }
+    // object asado {
+    //     method precio()         = 350
+    //     method esComida()       = true
+    //     method esElectro()      = false
+    // }
+    // object fideos {
+    //     method precio()         = 50
+    //     method esComida()       = true
+    //     method esElectro()      = false
+    // }
+    // object plancha {
+    //     method precio()         = 1200
+    //     method esComida()       = false
+    //     method esElectro()      = true
+    // }
+
+// Ej#03 - El sueldo de pepe (continuacion)
+
+
+    // Parte 1: Sueldo
+    // Parte 2: Situación sindical
+    // Parte 3: Bono por presentismo
+
+    object pepe {
+        var esGerente = true
+        var faltas = 1
+        var sindicato = comprometrido
+        var bono = bonoNormal
+
+        method sindicato(_nuevoSindicato) {sindicato = _nuevoSindicato}
+        method esGerente() = esGerente
+        method hayPresentismo() = faltas == 0
+        method cantFaltas() = faltas
+        method faltarUnDia() {faltas += 1}
+        method neto() = if (self.esGerente()) 15000 else 20000
+        method sueldo() = self.neto() - sindicato.honorario(self.neto()) + bono.bonificacion(self)
+        method promover() {esGerente = true}
     }
-    object cuentaJulian {
-        var    saldo = 2000
-        method tieneSaldo() = saldo > 0
-        method saldo() = saldo
-        method depositar(_cantPesos) {saldo += _cantPesos * 0.8}
-        method extraer(_cantPesos) {
-            if (self.tieneSaldo()) {
-                saldo -= _cantPesos
-                saldo = saldo - 5.min(saldo)
+
+    // MAS TRABAJADORES
+
+    object roque {
+        method sueldoFijo() = 28000
+        var sindicato = comprometido
+        method sindicato(_nuevoSindicato) {sindicato = _nuevoSindicato}
+        method sueldo() = self.neto() + sindicato.honorario(self.neto()) 
+        method neto() = self.sueldoFijo() + 9500
+    }
+
+    object ernesto {    
+        var sindicato = comprometido
+        var companiero = roque
+        var faltas = 1
+        var bono = bonoNormal
+        method hayPresentismo() = faltas == 0
+        method companiero(_nuevoCompa) {companiero = _nuevoCompa}
+        method sindicato(_nuevoSindicato) {sindicato = _nuevoSindicato}
+        method sueldo() = self.neto() + bono.bonificacion(self)
+        method neto() = companiero.neto()
+
+
+    }
+    
+    // SITUACION SINDICAL
+
+        object porcentual {
+            method honorario(_neto) =  0.03 * _neto
+        }
+        object comprometido {
+            method honorario(_neto) = 0.01 + _neto + 1500
+        }
+        object noSindicalizado {
+            method honorario(_neto) = 0
+        }
+
+    // LOS BONOS 
+
+        object bonoNormal {
+            method bonificacion(_empleado) {
+                if (_empleado.cantFaltas() == 0) {return  2000}
+                else if (_empleado.cantFaltas() == 1) {return  1000}
+                else {return 0}
+                    
             }
         }
-    }
-    object cuentaPapa {
-        var saldoDolares = 700
-        // const saldo = saldoDolares * self.precioDeCompra()
-
-        var precioDeVenta = 15.10
-        var precioDeCompra = 14.70
-
-        method nuevoPrecioDeVenta(_nuevoPrecio) {precioDeVenta = _nuevoPrecio}
-        method nuevoPrecioDeCompra(_nuevoPrecio) {precioDeCompra = _nuevoPrecio}
-        
-        method precioDeVenta() = precioDeVenta
-        method precioDeCompra() = precioDeCompra
-
-        method tieneSaldo() = self.saldo() > 0
-        method saldo() = saldoDolares * self.precioDeCompra()
-        method depositar(_cantPesos) {saldoDolares += _cantPesos / precioDeVenta}
-        method extraer(_cantPesos) {
-            if (self.tieneSaldo())
-             saldoDolares -= _cantPesos / precioDeCompra
-        }
-    }
-    object casaHermanos {
-        const sumaDeTotasLasCompras   = 1000
-        var cuentaPrincipal         = cuentaPepe
-        var ultimaCosaQueSeCompro   = heladera
-        method nuevaCuentaPrincipal(_unaCuenta) {
-          cuentaPrincipal = _unaCuenta
-        }
-        method esDerrochona()   = sumaDeTotasLasCompras > 5000
-        method esBacana()       = cuentaPrincipal.saldo() > 40000
-
-        method gastar(_importeEnPeso) {cuentaPrincipal.extraer(_importeEnPeso)}
-        method comprar(_unaCosa) {
-            self.gastar(_unaCosa.precio())
-            ultimaCosaQueSeCompro = _unaCosa
+        object bonoEpocaAjuste {
+            method bonificacion(_empleado) {
+                if (_empleado.cantFaltas() == 0) {return  10}
+                else {return 0}
             }
-        method tieneComida() {
-            // ... aca viene algo con listas / conjuntos
         }
-        method puedeComprar(_unaCosa) = cuentaPrincipal.saldo() > _unaCosa.precio()
-        method cuentaParaGastos() = cuentaPrincipal
-    }
-    object combinada {
-        var cuentaPrimaria = cuentaPepe
-        var cuentaSecundaria = cuentaJulian
-
-        var residual = 0
-
-        method saldo() = cuentaPrimaria.saldo() + cuentaSecundaria.saldo()
-
-        method nuevaCuentaPrimaria(_nuevaCuentaPrimaria)    {cuentaPrimaria = _nuevaCuentaPrimaria}
-        method nuevaCuentaSecundaria(_nuevaCuentaSecundaria)  {cuentaSecundaria = _nuevaCuentaSecundaria}
-
-        method depositar(_cantPesos) {
-            if (cuentaSecundaria.saldo() < 1000) {cuentaSecundaria.depositar(_cantPesos)}
-            else {cuentaPrimaria.depositar(_cantPesos)}
+        object demagogico {
+            method bonificacion(_empleado) = if (_empleado.neto() < 18000) 500 else 350
         }
-        method extraer(_cantPesos) {
-            if (self.saldo() > _cantPesos)
-                residual = (_cantPesos - cuentaPrimaria.saldo()).max(0)
-                cuentaPrimaria.extraer(_cantPesos)
-                cuentaSecundaria.extraer(residual)
-        }
+
+// Ej#04 - Tuberias
+
+    object tramoRectoLargo {
+        var velocidadEntrada = 10
+        var siguienteTramo = codo
+        method siguiente() = siguienteTramo
+        method siguiente(_elTramoQueSigue) {siguienteTramo = _elTramoQueSigue}
+        method velocidadEntrada(_unaVelocidad) {velocidadEntrada = _unaVelocidad}
+        method esSiguienteTramo(_unTramo) {siguienteTramo = _unTramo}
+        method longitud() = 200
+        method longitudMaximaHastaElFinal() = self.longitud() 
+            + self.siguiente().longitudMaximaHastaElFinal()
+        method velocidadMaximaDeSalida(_velocidadInput) = _velocidadInput
     }
-
-    object heladera {
-        method precio()         = 20000
-        method esComida()       = false
-        method esElectro()      = true
+    object tramoRectoCorto {
+        var velocidadEntrada = 10 
+        var siguienteTramo = codo
+        method siguiente() = siguienteTramo
+        method siguiente(_elTramoQueSigue) {siguienteTramo = _elTramoQueSigue}
+        
+        method velocidadEntrada(_unaVelocidad) {velocidadEntrada = _unaVelocidad}
+        method velocidadMaximaDeSalida(_velocidadInput) = _velocidadInput
+        method longitud() = 40
+        method longitudMaximaHastaElFinal() = self.longitud() + 
+            self.siguiente().longitudMaximaHastaElFinal()
     }
-
-    object cama {
-        method precio()         = 8000
-        method esComida()       = false
-        method esElectro()      = false
+    object codo {
+        // var velocidadEntrada = 10 
+        // method velocidadEntrada(_unaVelocidad) {velocidadEntrada = _unaVelocidad}
+        method velocidadMaximaDeSalida(_velocidadEntrada) = _velocidadEntrada - 20
+        var siguienteTramo = tramoDeSubida
+        method siguiente(_elTramoQueSigue) {siguienteTramo = _elTramoQueSigue}
+        method siguiente() = siguienteTramo
+        method longitud() = 70
+        method longitudMaximaHastaElFinal() = self.longitud() + 
+            self.siguiente().longitudMaximaHastaElFinal()
     }
+    object bifucarcionY {
+        // var velocidadEntradaIzquierda = 10
+        // var velocidadEntradaDerecha = 10
 
-    object asado {
-        method precio()         = 350
-        method esComida()       = true
-        method esElectro()      = false
+        var siguienteTramoIzquierdo = tramoRectoCorto
+        var siguienteTramoDerecho   = tramoRectoLargo
+
+        method siguienteIzquierda()   = siguienteTramoIzquierdo
+        method siguienteDerecha()     = siguienteTramoDerecho
+        
+        // method velocidadDeEntradaIzq(_unaVelocidad) {velocidadEntradaIzquierda = _unaVelocidad}
+        // method velocidadDeEntradaDer(_unaVelocidad) {velocidadEntradaDerecha = _unaVelocidad}
+        
+        method velocidadMaximaDeSalida(_velocidadEntrada) = 
+            self.siguienteDerecha().velocidadMaximaDeSalida(_velocidadEntrada).
+                max(self.siguienteIzquierda().velocidadMaximaDeSalida(_velocidadEntrada))
+
+        method esSiguienteTramoIzq(_unTramo) {siguienteTramoIzquierdo = _unTramo}
+        method esSiguienteTramoDer(_unTramo) {siguienteTramoDerecho = _unTramo}
+        method longitud() = 50
+        method longitudMaximaHastaElFinal() = 
+            self.longitud() + 
+            self.siguienteIzquierda().longitudMaximaHastaElFinal().max(self.siguienteDerecha().longitudMaximaHastaElFinal()) 
     }
-
-    object fideos {
-        method precio()         = 50
-        method esComida()       = true
-        method esElectro()      = false
+    object tramoDeSubida {
+        // var velocidadEntrada = 10
+        var siguienteTramo = tramoRectoCorto
+        // method velocidadEntrada(_unaVelocidad) {velocidadEntrada = _unaVelocidad}
+        method velocidadMaximaDeSalida(_velocidadEntrada) = _velocidadEntrada / 2
+        method esSiguienteTramo(_unTramo) {siguienteTramo = _unTramo}
+        method siguiente() = siguienteTramo
+        method longitud() = 100
+        method longitudMaximaHastaElFinal() = self.longitud() + 
+            self.siguiente().longitudMaximaHastaElFinal()
     }
-
-    object plancha {
-        method precio()         = 1200
-        method esComida()       = false
-        method esElectro()      = true
+    object tramoDeBajada {
+        var velocidadEntrada = 10
+        var siguienteTramo = tope
+        method velocidadEntrada(_unaVelocidad) {velocidadEntrada = _unaVelocidad}
+        method velocidadMaximaDeSalida(velocidadInput) {return velocidadInput * 2}
+        method esSiguienteTramo(_unTramo) {siguienteTramo = _unTramo}
+        method siguiente() = siguienteTramo
+        method longitud() = 200
+        method longitudMaximaHastaElFinal() = self.longitud() + 
+            self.siguiente().longitudMaximaHastaElFinal()
     }
-
-//     // Parte 1: Agregar las cosas que se compran
-//         object pepe {
-//         var saldo = 0
-//         method saldo() {return saldo}
-//         method depositar(unaCantidadPesos) {saldo += unaCantidadPesos}
-//         method extraer(unaCantidadPesos) {saldo -= unaCantidadPesos}
-//     }
-//     object julian {
-//         var saldo = 0
-//         method saldo() {return saldo}
-//         method depositar(unaCantidadPesos) {saldo += unaCantidadPesos * 0.8}
-//         method extraer(unaCantidadPesos) {
-//             saldo -= unaCantidadPesos
-//             saldo = saldo - 5.min(saldo)
-//         }
-//     }
-//     object papa {
-//         saldoDolares = 0
-//         method saldo() {return saldoDolares * 14.70}
-//         method depositar(unaCantidadDePesos) {saldoDolares += unaCantidadDePesos / 15.10}
-//         method extraer(unaCantidadDePesos) {saldoDolares -= unaCantidadDePesos / 14.70}
-//     }
-
-//     object combinada {
-//         var cuentaPrimaria
-//         var cuentaSecundaria
-//         method cuentaPrimariaEs(_unaCuenta) {cuentaPrimaria = _unaCuenta}
-//         method cuentaSecundariaEs(_unaCuenta) {cuentaSecundaria = _unaCuenta}
-//         method saldo() {return cuentaPrimaria.saldo() + cuentaSecundaria.saldo()}
-//         method depositar(unaCantidadDePesos) {
-//             if (cuentaSecundaria.saldo() < 1000) {cuentaSecundaria.depositar(unaCantidadDePesos)}
-//             else {cuentaPrimaria.depositar(unaCantidadDePesos)}
-//         }
-//         method extraer(unaCantidadDePesos) {
-//             cuentaPrimaria.extraer(unaCantidadDePesos.max(cuentaPrimaria.saldo()))
-//             cuentaSecundaria.extraer(...)       // seguir completando ... pero va queriendo
-//         }
-//     }
-
-//     object casaHermanos {
-//         // var     saldo = 0
-//         var     compras = []
-//         var     cuentaGastos 
-        
-//         method  cuentaParaGastosEs(_unaCuenta) {return cuentaGastos = _unaCuenta}
-//         method  saldo() {return cuentaGastos.saldo()}
-        
-//         method  esDerrochona() {return compras.sum({compra => compra}) > 5000}
-//         method  esBacana() {return pepe.saldo() + julian.saldo() > 40000}
-        
-//         method  gastar(_importe) {cuentaParaGastos.extraer(_importe)}
-//         method comprar(_cosa) {
-//             compras.add(_cosa)
-//             self.gastar(_cosa.precio())
-//         }
-
-//         method tieneComida() {
-//             // hay algun elementos en compras que le resulte verdadera 
-//             // la proposicion elemento.esComida()
-//                             }
-
-//         method vieneDeEquiparse() {
-//             return 
-//                 // _ultimo_elemento_comprado.esElectro()       ||
-//                 // _ultimo_elemento_comprado.precio() > 5000 
-//         }
-
-//         method puedeComprar(_cosa) {return _cosa.precio() < self.saldo()}
-
-//         method cuentaParaGastos() {return cuentaGastos}
-//     }
-
-
-
-//     Parte 2: Jugamos con los objetos construidos
-//     Levantar un REPL nuevito, y hacer lo siguiente    
-
-//     1. Depositar 8000 pesos en la cuenta de Pepe, 15000 en la de Julián, y 45300 (que
-//     equivalen a 3000 dólares) en la del padre.
-
-//         pepe.depositar(8000)
-//         julian.depositar(15000)
-//         papa.depositar(45300)
-
-//     2. Asignar como cuenta primaria y secundaria de la cuenta combinada, las cuentas
-//     de Pepe y de Julián respectivamente.
-
-//         combinada.cuentaPrimariaEs(pepe)
-//         combinada.cuentaPrimariaEs(julian)
-        
-//     3. Congurar la casa de Pepe y Julián para que use la cuenta combinada.
-
-//         casaHermanos.cuentaParaGastosEs(combinada)
-
-//     4. Hacer que la casa compre, en este orden, la plancha y la cama.
-
-//         casaHermanos.comprar(plancha)
-//         casaHermanos.comprar(cama)
-
-//     5. Dibujar el grafo de referencias entre objetos a esta altura. Incluir todos los objetos
-//     denidos, incluso los que quedan sueltos en el grafo.
-
-//         // Dibujar
-
-//     6. Calcular cuánto debería ser el saldo de la cuenta combinada después de todo esto,
-//     y vericar que el saldo es el calculado.
-
-//         // combinada.saldo()   y   comparar ... o algo por el estilo pide este ejercicio.
-//         // ¿Aca hay testing?
-
-//     7. Preguntarle a la casa si viene de equiparse, y si puede comprar la heladera, ¾qué
-//     responde? ¾Podés explicar por qué?
-
-//         casaHermanos.vieneDeEquiparse()
-//         casaHermanos.puedeComprar(heladera)
-    
-//     OJO! como en el ejercicio anterior, te pedimos no cerrar el REPL, vamos a seguir
-//     usándolo en la parte que sigue.
-
-// // Ej#03 - El sueldo de pepe (continuacion)
-
-//     method pepe {
-//         var esGerente = true
-//         var diasFalta = 1
-//         var sindicato 
-//         var bono
-
-//         method conBonificacion(_tipoDeBono) {bono = _tipoDeBono}
-//         method esDelSindicato(_agrupacionSindical) {sindicato = _agrupacionSindical}
-
-//         method esGerente()          {return esGerente}
-//         method hayPresentismo()     {return diasFalta == 0}
-//         method cantFaltas()         {return diasFalta}
-//         method neto() {
-//             if (self.esGerente()) {return 15000}
-//             else {return 20000}
-//         }
-//         method sueldo() {
-//             enMano = self.neto() - sindicato.honorario(self.neto())
-//             enMano += bono.bonfificacion()
-//             return enMano
-//         }
-//     }
-
-//     method roque {
-//         var esGerente = false
-//         var diasFalta = 999
-//         var sindicato 
-
-//         method esDelSindicato(_agrupacionSindical) {sindicato = _agrupacionSindical}
-        
-//         method esGerente() {return esGerente}
-//         method hayPresentismo() {return diasFalta == 0}
-//         method cantFaltas() {return diasFalta}
-//         method neto() {return 28000}
-//         method sueldo() {
-//             enMano = self.neto() - sindicato.honorario(self.neto())
-//             enMano += 9500
-//             return enMano
-//         }
-//     }
-
-//     method ernesto {
-//         var diasFalta = 0
-//         var companiero 
-//         var bono
-
-//         // Setter
-//         method conBonificacion(_tipoDeBono) {bono = _tipoDeBono}
-//         method esCompañeroDe(_unCompañero) {companiero = _unCompañero}
-        
-//         method hayPresentismo() {return diasFalta == 0}
-//         method cantFaltas() {return diasFalta}
-//         method neto() {return companiero.neto()}
-//         method sueldo() {
-//             return self.neto() + bonificacion(companiero)
-//         }
-//     }
-
-//     object porcentual {
-//         method honorario(_sueldoBase) {return 0.03 + _sueldoBase}
-//     }
-
-//     object comprometido {
-//         method honorario(_sueldoBase) {
-//             return 0.01 * _sueldoBase + 1500
-//         }
-//     }
-
-//     object noSindicalizado {
-//         method honorario(_sueldoBase) {return 0}
-//     }
-
-//     object bonoNormal {
-//         method bonificacion(_empleado) {
-//             if (_empleado.cantFaltas() == 0) {return  2000}
-//             if (_empleado.cantFaltas() == 1) {return  1000}
-//             else {return 0}
-                
-//         }
-//     }
-
-//     object bonoEpocaAjuste {
-//         method bonificacion(_empleado) {
-//             if (_empleado.cantFaltas() == 0) {return  10}
-//             else {return 0}
-//         }
-//     }
-
-//     object demagogico {
-//         method bonificacion(_empleado) {
-//             if (_empleado.neto() < 18000)   {return 500}
-//             if (_empleado.neto() >= 18000)  {return 350}
-//         }
-//     }
-
-//     // Parte 1: Armamos una conguración
-
-//     pepe.neto()
-//     pepe.sueldo(comprometido, bonoNormal)
-
-//     * Levantar un REPL nuevito, congurar a Pepe para que sea gerente, tenga descuento
-//         por sindicato como comprometido, y bono por presentismo normal. Hacer que falte
-//         una vez.
-//     * Dibujar el grafo de referencias entre objetos como quedó.
-//     * Calcular el sueldo que debería tener Pepe, preguntar, ver que dio lo que se esperaba.
-//     * Después, hacer un test Wollok que pruebe esto, el assert es sobre el sueldo.
-
-//     // Parte 2: Más gente
-
-//     Agregar al mismo modelo a las siguientes personas
-//     Roque, que tiene 28000 jo de neto. El sueldo se calcula como neto - descuento
-//     por sindicato + 9500 pesos. Para los descuentos por sindicato, se usan las mismas
-//     opciones que para Pepe.
-//     Ernesto, que trabaja junto con un compañero, que puede cambiar. El neto de
-//     Ernesto es igual al de su compañero. Su sueldo se calcula como neto + bono por
-//     presentismo. Para los bonos, usar las mismas opciones que para Pepe. Se sabe que
-//     Ernesto no falta nunca.
-
-//     // pepe
-//     // roque.esDelSindicato(comprometido)
-//     // ernesto.esCompañeroDe(pepe)
-//     // ernesto.conBonificacion(bonoEpocaAjuste)
-
-    
-//     Después de agregar estos objetos, armar un test Wollok en el que Pepe esté congurado
-//     como en el test anterior, Roque tenga descuento por sindicato como comprometido,
-//     Ernesto tenga como compañero a Pepe, y como bono el de época de ajuste. El assert
-//     sobre este test son los sueldos de Roque y de Ernesto.
-//     Dibujar el grafo de referencias entre objetos. Marcar los objetos que intervienen en el
-//     cálculo del sueldo de Ernesto.
-    
-// // Ej#04 - Tuberias
-
-//     object tramoRectoLargo {
-//         var velocidadEntrada 
-//         var siguienteTramo
-//         method esVelocidadDeEntrada(_unaVelocidad) {velocidad = _unaVelocidad}
-//         method esSiguienteTramo(_unTramo) {siguienteTramo = _unTramo}
-//         method siguiente() {return siguienteTramo}
-//         method siguienteTramo() {return siguienteTramo}
-//         method longitud() {return 200}
-//         method longitudMaximaHastaElFinal() {
-//             return self.longitud() + self.siguiente().longitudMaximaHastaElFinal()
-//         }
-//         method velocidadMaximaDeSalida(velocidadInput) {return velocidadInput}
-//     }
-
-//     object tramoRectoCorto {
-//         var velocidadEntrada 
-//         method esVelocidadDeEntrada(_unaVelocidad) {velocidad = _unaVelocidad}
-//         method velocidadMaximaDeSalida(velocidadInput) {return velocidadInput}
-//         var siguienteTramo
-//         method esSiguienteTramo(_unTramo) {siguienteTramo = _unTramo}
-//         method siguiente() {return siguienteTrammo}
-//         method longitud() {return 40}
-//         method longitudMaximaHastaElFinal() {
-//             return self.longitud() + self.siguiente().longitudMaximaHastaElFinal()
-//         }
-//     }
-
-//     object codo {
-//         var velocidadEntrada 
-//         method esVelocidadDeEntrada(_unaVelocidad) {velocidad = _unaVelocidad}
-//         method velocidadMaximaDeSalida(velocidadInput) {return velocidadInput - 20}
-//         var siguienteTramo
-//         method esSiguienteTramo(_unTramo) {siguienteTramo = _unTramo}
-//         method siguiente() {return siguienteTrammo}
-//         method longitud() {return 70}
-//         method longitudMaximaHastaElFinal() {
-//             return self.longitud() + self.siguiente().longitudMaximaHastaElFinal()
-//         }
-//     }
-
-//     object bifucarcionY {
-//         var velocidadEntradaIzquierda
-//         var velocidadEntradaDerecna
-
-//         // setters
-//         method esVelocidadDeEntradaIzq(_unaVelocidad) {velocidadEntradaIzquierda = _unaVelocidad}
-//         method esVelocidadDeEntradaDer(_unaVelocidad) {velocidadEntradaDerecna = _unaVelocidad}
-        
-//         var velocidadElegida = velocidadEntradaIzquierda.max(velocidadEntradaDerecna)
-//         method velocidadMaximaDeSalida(velocidadElegida) {return velocidadInput}
-//         var siguienteTramoIzquierdo
-//         var siguienteTramoDerecho
-
-//         method esSiguienteTramoIzq(_unTramo) {siguienteTramoIzquierdo = _unTramo}
-//         method esSiguienteTramoDer(_unTramo) {siguienteTramoDerecho = _unTramo}
-
-//         method siguienteIzquierda() {return siguienteTramoIzquierdo}
-//         method siguienteDerecha()   {return siguienteTramoDerecho}
-
-//         method longitud() {return 50}
-//         method longitudMaximaHastaElFinal() {
-//             return self.longitud() + 
-//                 self.siguienteIzquierda().longitudMaximaHastaElFinal().
-//                     max(self.siguienteDerecha().longitudMaximaHastaElFinal())
-//             }
-//     }
-
-//     object tramoDeSubida {
-//         var velocidadEntrada 
-//         method esVelocidadDeEntrada(_unaVelocidad) {velocidad = _unaVelocidad}
-//         method velocidadMaximaDeSalida(velocidadInput) {return velocidadInput * 2}
-//         var siguienteTramo
-//         method esSiguienteTramo(_unTramo) {siguienteTramo = _unTramo}
-//         method siguiente() {return siguienteTrammo}
-//         method longitud() {return 100}
-//         method longitudMaximaHastaElFinal() {
-//             return self.longitud() + self.siguiente().longitudMaximaHastaElFinal()
-//         }
-//     }
-
-//     object tramoDeBajada {
-//         var velocidadEntrada 
-//         method esVelocidadDeEntrada(_unaVelocidad) {velocidad = _unaVelocidad}
-//         method velocidadMaximaDeSalida(velocidadInput) {return velocidadInput * 2}
-//         var siguienteTramo
-//         method esSiguienteTramo(_unTramo) {siguienteTramo = _unTramo}
-//         method siguiente() {return siguienteTrammo}
-//         method longitud() {return 200}
-//         method longitudMaximaHastaElFinal() {
-//             return self.longitud() + self.siguiente().longitudMaximaHastaElFinal()
-//             }
-//     }
-
-//     object tope {
-//         var velocidadEntrada 
-//         method esVelocidadDeEntrada(_unaVelocidad) {velocidad = _unaVelocidad}
-//         method velocidadMaximaDeSalida(velocidadInput) {return 0}
-//         var velocidadEntrada 
-//         method esVelocidadDeEntrada(_unaVelocidad) {velocidad = _unaVelocidad}
-//         method velocidadMaximaDeSalida(velocidadInput) {return velocidadInput - 20}
-//         method longitud() {return 0}
-//         method longitudMaximaHastaElFinal() {return 0}
-//     }
-
-//     object canilla {
-//         var velocidadEntrada 
-//         method esVelocidadDeEntrada(_unaVelocidad) {velocidad = _unaVelocidad}
-//         method velocidadMaximaDeSalida(velocidadInput) {return velocidadInput - 5}
-//         method longitud() {return 10}
-//         method longitudMaximaHastaElFinal() {return 0}
-//     }
+    object tope {
+        // var velocidadEntrada = 10
+        // method velocidadEntrada(_unaVelocidad) {velocidadEntrada = _unaVelocidad}
+        method velocidadMaximaDeSalida(_velocidadEntrada) = 0
+        method longitud() = 0
+        method longitudMaximaHastaElFinal() = 0
+    }
+    object canilla {
+        // var velocidadEntrada = 0
+        // method velocidadEntrada(_unaVelocidad) {velocidadEntrada = _unaVelocidad}
+        method velocidadMaximaDeSalida(_velocidadEntrada) = _velocidadEntrada - 5
+        method longitud() = 10
+        method longitudMaximaHastaElFinal() = 0
+    }
 
 // // Ej#05 - Juego con personajes
 

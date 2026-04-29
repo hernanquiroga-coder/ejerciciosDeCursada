@@ -3,6 +3,7 @@
 
 import guiaNum01.*
 import guiaNum02.*
+import guiaNum03.*
 
 // describe "group of tests for Guia #01" {
 
@@ -116,78 +117,105 @@ import guiaNum02.*
   // }
 // } 
 
-describe "group of tests for Guia #02" {
+// describe "group of tests for Guia #02" {
 
-  // test "Ej#01. Luego de una secuencia dada, la vela debe estar encendida" {
-  //   pelota.caer()
-  //   vela.prender()
-  //   assert.that(vela.encendida())
-  // }
+//   // test "Ej#01. Luego de una secuencia dada, la vela debe estar encendida" {
+//   //   pelota.caer()
+//   //   vela.prender()
+//   //   assert.that(vela.encendida())
+//   // }
 
-  // test "Ej#04. Pepe hace 3 jueguitos, se le cae y luego hace 2 jueguitos, record deberia indicar 3" {
-  //   pepe.jueguito()
-  //   pepe.jueguito()
-  //   pepe.jueguito()
-  //   pepe.pique()
-  //   pepe.jueguito()
-  //   pepe.jueguito()
-  //   assert.equals(3, pepe.record())
-  // }
+//   // test "Ej#04. Pepe hace 3 jueguitos, se le cae y luego hace 2 jueguitos, record deberia indicar 3" {
+//   //   pepe.jueguito()
+//   //   pepe.jueguito()
+//   //   pepe.jueguito()
+//   //   pepe.pique()
+//   //   pepe.jueguito()
+//   //   pepe.jueguito()
+//   //   assert.equals(3, pepe.record())
+//   // }
 
-  // test "Ej#05. La enterprise arranca con potencia 50 y coraza 5" {
-  //   assert.equals(50, enterprise.potencia())
-  // }
+//   // test "Ej#05. La enterprise arranca con potencia 50 y coraza 5" {
+//   //   assert.equals(50, enterprise.potencia())
+//   // }
 
-  // test "Ej#05. La enterprise arranca con potencia 50 y coraza 5" {
-  //   assert.equals(5, enterprise.coraza())
-  // }
+//   // test "Ej#05. La enterprise arranca con potencia 50 y coraza 5" {
+//   //   assert.equals(5, enterprise.coraza())
+//   // }
 
-  // test "Ej#05. La enterprise es atacada por Khan, su ataque la deja sin escudo y con potencia 5" {
-  //   enterprise.encontrar(khan)
-  //   assert.equals(0, enterprise.coraza())
-  // }
+//   // test "Ej#05. La enterprise es atacada por Khan, su ataque la deja sin escudo y con potencia 5" {
+//   //   enterprise.encontrar(khan)
+//   //   assert.equals(0, enterprise.coraza())
+//   // }
 
-  // test "Ej#05. La enterprise es atacada por Khan, su ataque la deja sin escudo y con potencia 5" {
-  //   enterprise.encontrar(khan)
-  //   assert.equals(5, enterprise.potencia())
-  // }
+//   // test "Ej#05. La enterprise es atacada por Khan, su ataque la deja sin escudo y con potencia 5" {
+//   //   enterprise.encontrar(khan)
+//   //   assert.equals(5, enterprise.potencia())
+//   // }
 
-  // test "Ej#06. Pepita con energia inicial 100 al vacionar en el Noroeste, queda revitalizada, y su energia queda en 110" {
-  //   pepita.vacionar(noroteste)
-  //   assert.equals(110, pepita.energia())
+//   // test "Ej#06. Pepita con energia inicial 100 al vacionar en el Noroeste, queda revitalizada, y su energia queda en 110" {
+//   //   pepita.vacionar(noroteste)
+//   //   assert.equals(110, pepita.energia())
 
-  // test "Ej#07. Probamos el validador y los contadores. Se pueden hacer varias pruebas mas especificas" {
-  //   telefono.agregarDigito(8)
-  //   telefono.agregarDigito(9)
-  //   telefono.agregarDigito(0)
-  //   telefono.agregarDigito(2)
-  //   telefono.agregarDigito(2) 
-  //   telefono.agregarDigito(2)
-  //   telefono.agregarDigito(2) 
-  //   telefono.llamar(100)
-  //   assert.that(telefono.esNumeroValido())
-  //   // assert.that(telefono.esNumeroFijo())
-  //   // assert.equals(1, telefono.cantLlamadas())
-  //   // assert.equals(1, telefono.cantLlamadasFijos())
-  //   // assert.equals(1, telefono.cantLlamadasCelulares())
-  //   }
+//   // test "Ej#07. Probamos el validador y los contadores. Se pueden hacer varias pruebas mas especificas" {
+//   //   telefono.agregarDigito(8)
+//   //   telefono.agregarDigito(9)
+//   //   telefono.agregarDigito(0)
+//   //   telefono.agregarDigito(2)
+//   //   telefono.agregarDigito(2) 
+//   //   telefono.agregarDigito(2)
+//   //   telefono.agregarDigito(2) 
+//   //   telefono.llamar(100)
+//   //   assert.that(telefono.esNumeroValido())
+//   //   // assert.that(telefono.esNumeroFijo())
+//   //   // assert.equals(1, telefono.cantLlamadas())
+//   //   // assert.equals(1, telefono.cantLlamadasFijos())
+//   //   // assert.equals(1, telefono.cantLlamadasCelulares())
+//   //   }
 
-    // test 'Ej#11. Cambiando el sueldo de Pepe conforme su categoria. 
-    //         Pepe gerente cobra 19400, con sindicato porcentual
-    //         Pepe gerente cobra ***, con sindicato ***' {
+//     // test 'Ej#11. Cambiando el sueldo de Pepe conforme su categoria. 
+//     //         Pepe gerente cobra 19400, con sindicato porcentual
+//     //         Pepe gerente cobra ***, con sindicato ***' {
       
-    //   assert.equals(19400, pepe.sueldo())
-    //   // Funciona esto ... ¿?
-    // }
+//     //   assert.equals(19400, pepe.sueldo())
+//     //   // Funciona esto ... ¿?
+//     // }
 
-    test "Ej#12. El paquete de George no esta pago, no puede ser llevado por Neo a La Matrix" {
+//     test "Ej#12. El paquete de George no esta pago, no puede ser llevado por Neo a La Matrix" {
       
-      assert.notThat(paquete.puedeEntregar(neo, matrix))
-    }
+//       assert.notThat(paquete.puedeEntregar(neo, matrix))
+//     }
 
-    test "Ej#12. El paquete de George esta pago, puede ser llevado por Neo a La Matrix porque le cargamos credito" {
-      paquete.pagar()
-      neo.darleCredito()
-      assert.that(paquete.puedeEntregar(neo, matrix))
-    }
+//     test "Ej#12. El paquete de George esta pago, puede ser llevado por Neo a La Matrix porque le cargamos credito" {
+//       paquete.pagar()
+//       neo.darleCredito()
+//       assert.that(paquete.puedeEntregar(neo, matrix))
+//     }
+// }
+
+describe "group of tests for Guia #03 " {
+  test "Ej#04. Tuberias. Ensamblando un tramo recto largo, codo, tramo en subida y tramo recto corto, en ese orden, el sigiuente de tramoRetoLargo deberia ser codo " {
+    
+    assert.equals(codo, tramoRectoLargo.siguiente())
+  }
+
+  test "Ej#04. Tuberias. Ensamblando un tramo recto largo, codo, tramo en subida y tramo recto corto, en ese orden, el sigiuente de codo deberia ser tramoDeSubida " {
+
+    assert.equals(tramoDeSubida, codo.siguiente())
+  }
+
+  test "Ej#04. Tuberias. Ensamblando un tramo recto largo, codo, tramo en subida y tramo recto corto, en ese orden, el sigiuente de tramoDeSubida deberia ser tramoRectoCorto " {
+
+    assert.equals(tramoRectoCorto, tramoDeSubida.siguiente())
+  }
+
+  test "Ej#04. Tuberias. Ensamblando un tramo recto largo, codo, tramo en subida y tramo recto corto, en ese orden, la longitud maxima del tramo recto largo deberia ser 410 " {
+
+    assert.equals(410, tramoRectoLargo.longitudMaximaHastaElFinal())
+  }
+
+  test "Ej#04. Tuberias. Ensamblando un tramo recto largo, codo, tramo en subida y tramo recto corto, en ese orden, la longitud maxima del tramo recto largo deberia ser 410 " {
+
+    assert.equals(410, tramoRectoLargo.longitudMaximaHastaElFinal())
+  }
 }
